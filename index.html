@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>To Infinity and Beyond – Interactive Worksheet</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(180deg, #0b1d33, #102a44);
+      color: #ffffff;
+      line-height: 1.6;
+    }
+    header {
+      padding: 24px 16px;
+      text-align: center;
+      background: radial-gradient(circle at top, #1f3a5f, #0b1d33);
+    }
+    header h1 {
+      margin-bottom: 8px;
+      font-size: 2rem;
+    }
+    header p {
+      max-width: 800px;
+      margin: 0 auto;
+      opacity: 0.9;
+    }
+    main {
+      padding: 16px;
+      max-width: 900px;
+      margin: auto;
+    }
+    .card {
+      background: #ffffff;
+      color: #000000;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 20px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    }
+    h2, h3 {
+      color: #1f3a5f;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin: 12px 0;
+    }
+    label {
+      font-weight: 600;
+      display: block;
+      margin-top: 14px;
+    }
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+      resize: vertical;
+    }
+    button {
+      margin-top: 18px;
+      padding: 12px 18px;
+      background: #1f3a5f;
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #162a45;
+    }
+    .feedback {
+      margin-top: 14px;
+      padding: 12px;
+      border-radius: 8px;
+      background: #eef3fa;
+      color: #000000;
+      display: none;
+    }
+    .answers {
+      margin-top: 14px;
+      padding: 14px;
+      background: #e0e8f3;
+      border-left: 5px solid #1f3a5f;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🚀 To Infinity and Beyond</h1>
+  <p><strong>Key question:</strong> Space conquest: a way to make money, a competition or a necessity?</p>
+  <p><strong>Theme:</strong> Space conquest: scientific innovations and responsibility</p>
+</header>
+
+<main>
+
+  <div class="card">
+    <h2>Before you start</h2>
+    <p>Use the following resource to find relevant information before answering the questions:</p>
+    <p><a href="https://www.spacefoundation.org/space_brief/us-space-law/" target="_blank">https://www.spacefoundation.org/space_brief/us-space-law/</a></p>
+  </div>
+
+  <div class="card">
+    <h2>Course 1: Asteroid Mining</h2>
+
+    <img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa" alt="Asteroid in space" />
+
+    <label>1. Why are the 1958 Space Act and the 2015 Space Act both relevant today?</label>
+    <textarea id="q1" rows="4"></textarea>
+
+    <label>2. Explain the different steps of the process shown in the infographic.</label>
+    <textarea id="q2" rows="4"></textarea>
+
+    <img src="https://images.unsplash.com/photo-1457369804613-52c61a468e7d" alt="Space mining illustration" />
+
+    <label>3. Why is water important in space?</label>
+    <textarea id="q3" rows="3"></textarea>
+
+    <label>4. Does the document support or oppose asteroid mining? Why?</label>
+    <textarea id="q4" rows="4"></textarea>
+
+    <button onclick="checkAnswers()">Submit my answers</button>
+
+    <div class="feedback" id="feedback"></div>
+
+    <div class="answers" id="answers">
+      <h3>Suggested answers</h3>
+      <p><strong>1.</strong> The 1958 Space Act established public control over space exploration, while the 2015 Space Act allows private companies to exploit space resources. Together, they shape today’s legal framework for commercial space activities.</p>
+      <p><strong>2.</strong> The process includes launching a spacecraft, locating an asteroid, surface and material analysis, confirming water content, extracting resources, and sending data back to Earth.</p>
+      <p><strong>3.</strong> Water is essential for drinking, producing oxygen, growing food, and making rocket fuel, which allows long-term human presence in space.</p>
+      <p><strong>4.</strong> The document mainly supports asteroid mining because it highlights its usefulness, feasibility, and role in sustainable space exploration.</p>
+        <div class="card" id="summaryPage" style="display:none;">
+      <h2>Summary</h2>
+      <p><strong>Your answers:</strong></p>
+      <ul>
+        <li><strong>Q1:</strong> <span id="s1"></span></li>
+        <li><strong>Q2:</strong> <span id="s2"></span></li>
+        <li><strong>Q3:</strong> <span id="s3"></span></li>
+        <li><strong>Q4:</strong> <span id="s4"></span></li>
+      </ul>
+      <p style="font-weight:bold; margin-top:16px;">✏️ Write that in your copybook! ;)</p>
+    </div>
+
+  </div>
+
+</main>
+
+<script>
+  let attempts = 0;
+
+  function checkAnswers() {
+    const q1 = document.getElementById('q1').value.trim();
+    const q2 = document.getElementById('q2').value.trim();
+    const q3 = document.getElementById('q3').value.trim();
+    const q4 = document.getElementById('q4').value.trim();
+
+    const feedback = document.getElementById('feedback');
+    const answers = document.getElementById('answers');
+
+    if (!q1 || !q2 || !q3 || !q4) {
+      feedback.style.display = 'block';
+      feedback.textContent = 'Please answer all questions before submitting.';
+      return;
+    }
+
+    attempts++;
+
+    if (attempts < 3) {
+      feedback.style.display = 'block';
+      feedback.textContent = 'Good attempt 👍 Read the document carefully and try to improve your answers.';
+    } else {
+      feedback.style.display = 'block';
+      feedback.textContent = 'Well done for trying 👏 Here are the suggested answers to help you.';
+      answers.style.display = 'block';
+      document.getElementById('s1').textContent = q1;
+      document.getElementById('s2').textContent = q2;
+      document.getElementById('s3').textContent = q3;
+      document.getElementById('s4').textContent = q4;
+      document.getElementById('summaryPage').style.display = 'block';
+    }
+  }
+</script>
+
+</body>
+</html>
