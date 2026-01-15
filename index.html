@@ -100,6 +100,7 @@
       background: #eef3fa;
       color: #000000;
       display: none;
+      white-space: pre-wrap;
     }
     .answers {
       margin-top: 14px;
@@ -255,7 +256,8 @@
       <h2>Lesson 1 – Asteroid Mining (Worksheet)</h2>
       <p class="hint">
         <strong>How it works:</strong> Answer <strong>one question at a time</strong>.
-        You must write at least <strong>15 words</strong> and use <strong>key ideas</strong>.
+        You must write at least <strong>15 words</strong> and include <strong>key ideas</strong>.
+        There is <strong>no maximum length</strong>.
       </p>
 
       <div class="figure">
@@ -266,7 +268,7 @@
         <div class="step active" id="step-q1">
           <div class="stepHeader">
             <div><span class="badge">Question 1/4</span></div>
-            <div class="hint" style="margin:0;">Minimum: 15 words </div>
+            <div class="hint" style="margin:0;">Minimum: 15 words</div>
           </div>
 
           <label>1. Why are the 1958 Space Act and the 2015 Space Act both relevant today?</label>
@@ -288,7 +290,7 @@
         <div class="step" id="step-q2">
           <div class="stepHeader">
             <div><span class="badge">Question 2/4</span></div>
-            <div class="hint" style="margin:0;">Minimum: 15 words </div>
+            <div class="hint" style="margin:0;">Minimum: 15 words</div>
           </div>
 
           <label>2. Explain the different steps of the process shown in the infographic.</label>
@@ -310,7 +312,7 @@
         <div class="step" id="step-q3">
           <div class="stepHeader">
             <div><span class="badge">Question 3/4</span></div>
-            <div class="hint" style="margin:0;">Minimum: 15 words </div>
+            <div class="hint" style="margin:0;">Minimum: 15 words</div>
           </div>
 
           <label>3. Why is water important in space?</label>
@@ -332,7 +334,7 @@
         <div class="step" id="step-q4">
           <div class="stepHeader">
             <div><span class="badge">Question 4/4</span></div>
-            <div class="hint" style="margin:0;">Minimum: 15 words </div>
+            <div class="hint" style="margin:0;">Minimum: 15 words</div>
           </div>
 
           <label>4. Does the document support or oppose asteroid mining? Why?</label>
@@ -424,7 +426,6 @@
           <p><strong>A5.</strong> Accept any well-argued answer (money/competition/necessity) if justified with ideas from the video.</p>
           <p style="font-weight:bold; margin-top:16px;">✏️ Write that in your copybook! ;)</p>
         </div>
-
       </div>
     </div>
   </section>
@@ -558,50 +559,70 @@
   }
 
   /* -------------------------
-     ANTI-CHARABIA (SOFT BUT REAL GATE)
-     - min words: 15 (no maximum)
-     - spam detection
-     - keywords required (minimal)
+     ANTI-CHARABIA (FIXED / LESS AGGRESSIVE)
+     - blocks real spam only
+     - avoids false positives on long correct answers
   --------------------------*/
   function isSpam(text){
-    const raw = (text||"").trim();
+    const raw = (text || "").trim();
     if (raw.length < 10) return true;
 
-    const t = raw.toLowerCase().replace(/[\s\W_]+/g,"");
-    if (t.length < 10) return true;
+    const compact = raw.toLowerCase().replace(/[\s\W_]+/g, "");
+    if (compact.length < 10) return true;
 
+    // A) long run of same character (aaaaaaa…)
     let run = 1;
-    for (let i=1;i<t.length;i++){
-      if (t[i]===t[i-1]) { run++; if (run>=9) return true; }
-      else run = 1;
+    for (let i = 1; i < compact.length; i++) {
+      if (compact[i] === compact[i - 1]) {
+        run++;
+        if (run >= 10) return true;
+      } else run = 1;
     }
 
-    if (t.length>=14){
-      const a=t[0], b=t[1];
-      if (a && b){
-        let ok=true;
-        for (let i=0;i<t.length;i++){
-          if (t[i] !== (i%2===0 ? a : b)) { ok=false; break; }
+    // B) ababababab…
+    if (compact.length >= 24) {
+      const a = compact[0], b = compact[1];
+      if (a && b) {
+        let ok = true;
+        for (let i = 0; i < compact.length; i++) {
+          if (compact[i] !== (i % 2 === 0 ? a : b)) { ok = false; break; }
         }
         if (ok) return true;
       }
     }
 
-    const uniq = new Set(t.split(""));
-    const ratio = uniq.size / t.length;
-    if (ratio < 0.16) return true;
+    // C) repeated same word too much (copy/paste)
+    const words = raw.toLowerCase().split(/\s+/).filter(Boolean);
+    if (words.length >= 12) {
+      const counts = new Map();
+      for (const w0 of words) {
+        const w = w0.replace(/[^a-z']/g, "");
+        if (w.length <= 2) continue; // ignore tiny words
+        counts.set(w, (counts.get(w) || 0) + 1);
+      }
+      let max = 0;
+      for (const v of counts.values()) max = Math.max(max, v);
+      const ratio = max / Math.max(1, words.length);
+      if (raw.length < 120 && ratio > 0.45) return true;
+      if (raw.length >= 120 && ratio > 0.32) return true;
+    }
+
+    // IMPORTANT: removed "unique char ratio" (too many false positives)
 
     return false;
   }
 
+  /* -------------------------
+     GATE RULES (MIN WORDS + SOME KEY IDEAS)
+     This gate is only to prevent "I wrote anything to unlock next".
+     It does NOT need to be perfect.
+  --------------------------*/
   const gateRules = {
-    // Lesson 1
     q1: { minWords: MIN_WORDS, keywordsAnyMin: { list: ["1958","2015","space act","commercial","private","companies","law","resources","rights"], n: 2 } },
     q2: { minWords: MIN_WORDS, keywordsAnyMin: { list: ["launch","spacecraft","asteroid","approach","locate","find","analyze","analysis","composition","extract","collect","process","steps"], n: 3 } },
     q3: { minWords: MIN_WORDS, keywordsAnyMin: { list: ["oxygen","life support","drink","drinking","fuel","propellant","rocket","refuel","hydrogen"], n: 2 } },
     q4: { minWords: MIN_WORDS, keywordsAnyMin: { list: ["support","oppose","because","since","evidence","benefit","risk","ethics","environment","feasible"], n: 2 } },
 
-    // Lesson 2
     v1: { minWords: MIN_WORDS, keywordsAnyMin: { list: ["asteroid","mining","mine","extract","resources","metals","water","materials"], n: 2 } },
     v2: { minWords: MIN_WORDS, keywordsAnyMin: { list: ["metals","water","fuel","profit","money","cost","missions","industry","resources","exploration"], n: 2 } },
     v3: { minWords: MIN_WORDS, keywordsAnyMin: { list: ["true","false","because","since","so","therefore"], n: 1 } },
@@ -609,32 +630,42 @@
   };
 
   function passesGate(fieldId, value){
-    const v = (value||"").trim();
+    const v = (value || "").trim();
     const r = gateRules[fieldId] || {};
+    const wc = wordsCount(v);
 
-    if (isSpam(v)) {
-      return { ok:false, reason:"Your answer looks incomplete (random letters / repetition). Write full sentences." };
+    if (isSpam(v)){
+      return {
+        ok:false,
+        type:"gibberish",
+        msg:"❌ Not yet. Your answer is not readable enough (too repetitive / random). Write full sentences."
+      };
     }
 
-    const wc = wordsCount(v);
     if (r.minWords && wc < r.minWords){
-      return { ok:false, reason:`Write at least ${r.minWords} words (no maximum).` };
+      return {
+        ok:false,
+        type:"too_short",
+        msg:`❌ Not yet. Please write at least ${r.minWords} words (no maximum).`
+      };
     }
 
     if (r.keywordsAnyMin){
       const hits = countMatches(v, r.keywordsAnyMin.list);
       if (hits < r.keywordsAnyMin.n){
-        return { ok:false, reason:"Add key ideas from the lesson (specific vocabulary)." };
+        return {
+          ok:false,
+          type:"missing_keywords",
+          msg:"❌ Not yet. Add a few key ideas from the lesson (use more specific vocabulary)."
+        };
       }
     }
 
-    return { ok:true, reason:"" };
+    return { ok:true, type:"ok", msg:"" };
   }
 
   /* -------------------------
-     SOFT CORRECTNESS (for showing correction)
-     - gate decides access
-     - this decides whether we show correction or not
+     SOFT CORRECTNESS (SHOW CORRECTION IF INCOMPLETE)
   --------------------------*/
   function gradeAnswer(fieldId, value){
     const t = norm(value);
@@ -682,7 +713,7 @@
     }
 
     if (fieldId === "v2"){
-      target = 1; // very soft: if they wrote enough, ok
+      target = 1; // very soft
       score = 1;
     }
 
@@ -699,12 +730,7 @@
     }
 
     const correct = (target === 0) ? true : (score >= target);
-    return {
-      correct,
-      note: correct
-        ? "✅ OK. Wait for correction with the class."
-        : "⚠️ Not fully correct / incomplete. Read the correction below, then improve your answer in your copybook."
-    };
+    return { correct };
   }
 
   /* -------------------------
@@ -797,27 +823,28 @@
 
     const value = el.value.trim();
     fb.style.display = "block";
-
     showCorrection(fieldId, false);
+    hideNextButton(fieldId);
 
-    // HARD GATE: if fails, they cannot proceed
     const gate = passesGate(fieldId, value);
+
     if (!gate.ok){
-      fb.textContent = "Not yet. " + gate.reason;
-      hideNextButton(fieldId);
+      fb.textContent = gate.msg;
       return;
     }
 
-    // Gate passed => allow next
     const g = gradeAnswer(fieldId, value);
-    fb.textContent = g.note;
-    unlockVocabButton();
-    showNextButton(fieldId);
 
-    // Show correction ONLY if not correct (soft grading)
-    if (!g.correct){
+    if (g.correct){
+      fb.textContent = "✅ Accepted. You can click Next. (Wait for correction with the class.)";
+      showCorrection(fieldId, false);
+    } else {
+      fb.textContent = "✅ Submitted (you can click Next), but your answer is incomplete. Read the correction below, then improve it in your copybook.";
       showCorrection(fieldId, true);
     }
+
+    unlockVocabButton();
+    showNextButton(fieldId);
   }
 
   function finishLesson1(){
@@ -858,22 +885,20 @@
     if (ans) ans.style.display = "none";
 
     if (!v1 || !v2 || !v3 || !v4 || !v5){
-      fb.textContent = "Please answer all activities before submitting.";
+      fb.textContent = "❌ Please answer all activities before submitting.";
       return;
     }
 
-    // Gate each text field
     const g1 = passesGate("v1", v1);
     const g2 = passesGate("v2", v2);
     const g3 = passesGate("v3", v3);
     const g5 = passesGate("v5", v5);
 
-    if (!g1.ok) { fb.textContent = "Not yet (A1). " + g1.reason; return; }
-    if (!g2.ok) { fb.textContent = "Not yet (A2). " + g2.reason; return; }
-    if (!g3.ok) { fb.textContent = "Not yet (A3). " + g3.reason; return; }
-    if (!g5.ok) { fb.textContent = "Not yet (A5). " + g5.reason; return; }
+    if (!g1.ok) { fb.textContent = "A1 — " + g1.msg; return; }
+    if (!g2.ok) { fb.textContent = "A2 — " + g2.msg; return; }
+    if (!g3.ok) { fb.textContent = "A3 — " + g3.msg; return; }
+    if (!g5.ok) { fb.textContent = "A5 — " + g5.msg; return; }
 
-    // MCQ check + show correction if needed
     const soft1 = gradeAnswer("v1", v1);
     const soft3 = gradeAnswer("v3", v3);
     const soft5 = gradeAnswer("v5", v5);
@@ -885,13 +910,13 @@
     if (!soft5.correct) problems.push("A5: give an opinion + justification.");
 
     if (problems.length > 0){
-      fb.textContent = "⚠️ Not fully correct / incomplete. Read the correction below, then improve your answer in your copybook.";
+      fb.textContent = "✅ Submitted, but incomplete. Read the correction below and improve your answers.";
       if (ans) ans.style.display = "block";
       unlockVocabButton();
       return;
     }
 
-    fb.textContent = "✅ OK. Wait for correction with the class.";
+    fb.textContent = "✅ Accepted. Wait for correction with the class.";
     if (ans) ans.style.display = "block";
     unlockVocabButton();
   }
@@ -943,7 +968,7 @@
         </div>
         <div style="font-weight:800; color:#1f3a5f; font-size:1.05rem;">${item.term}</div>
         <div class="choices" style="margin-top:8px;">
-          ${choices.map((c,i)=>`
+          ${choices.map((c)=>`
             <label>
               <input type="radio" name="${qId}" value="${escapeHtml(c)}">
               ${escapeHtml(c)}
