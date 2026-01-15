@@ -14,38 +14,22 @@
       color: #ffffff;
       line-height: 1.6;
     }
-
     header {
       padding: 24px 16px;
       text-align: center;
       background: radial-gradient(circle at top, #1f3a5f, #0b1d33);
     }
-
-    header h1 {
-      margin: 0 0 8px 0;
-      font-size: 2rem;
-    }
-
-    header p {
-      max-width: 900px;
-      margin: 6px auto;
-      opacity: 0.92;
-    }
-
-    main {
-      padding: 16px;
-      max-width: 980px;
-      margin: auto;
-    }
+    header h1 { margin: 0 0 8px 0; font-size: 2rem; }
+    header p { max-width: 900px; margin: 6px auto; opacity: 0.92; }
+    main { padding: 16px; max-width: 980px; margin: auto; }
 
     .nav {
       display: flex;
       gap: 10px;
       justify-content: center;
-      margin-bottom: 16px;
+      margin: 0 0 16px 0;
       flex-wrap: wrap;
     }
-
     .card {
       background: #ffffff;
       color: #000000;
@@ -54,29 +38,14 @@
       margin-bottom: 20px;
       box-shadow: 0 6px 20px rgba(0,0,0,0.25);
     }
-
-    h2, h3 {
-      color: #1f3a5f;
-      margin-top: 0;
-    }
-
-    a {
-      color: #1f3a5f;
-      word-break: break-word;
-    }
+    h2, h3 { color: #1f3a5f; margin-top: 0; }
+    a { color: #1f3a5f; word-break: break-word; }
 
     img {
-      display: block;
       max-width: 100%;
       border-radius: 10px;
       margin: 12px 0;
-    }
-
-    /* FORCE infographic full width */
-    .figure img {
-      width: 100%;
-      height: auto;
-      margin: 0;
+      display: block;
     }
 
     .figure {
@@ -86,7 +55,13 @@
       border-radius: 10px;
       border: 1px solid #e3e7f2;
     }
-
+    /* force the infographic to fill the card width */
+    .figure img {
+      width: 100%;
+      height: auto;
+      margin: 0;
+      border-radius: 10px;
+    }
     .figure .caption {
       font-size: 0.92rem;
       opacity: 0.85;
@@ -94,11 +69,7 @@
       color: #1f3a5f;
     }
 
-    label {
-      font-weight: 600;
-      display: block;
-      margin-top: 14px;
-    }
+    label { font-weight: 600; display: block; margin-top: 14px; }
 
     textarea {
       width: 100%;
@@ -120,10 +91,8 @@
       font-size: 16px;
       cursor: pointer;
     }
-
-    button:hover {
-      background: #162a45;
-    }
+    button:hover { background: #162a45; }
+    button:disabled { opacity: 0.55; cursor: not-allowed; }
 
     .feedback {
       margin-top: 14px;
@@ -133,7 +102,6 @@
       color: #000000;
       display: none;
     }
-
     .answers {
       margin-top: 14px;
       padding: 14px;
@@ -141,7 +109,6 @@
       border-left: 5px solid #1f3a5f;
       display: none;
     }
-
     .pill {
       display: inline-block;
       padding: 4px 10px;
@@ -152,15 +119,107 @@
       font-size: 0.9rem;
       margin-right: 6px;
     }
+    .hint { font-size: 0.95rem; opacity: 0.9; margin-top: 6px; }
+    ul { padding-left: 18px; }
 
-    .hint {
-      font-size: 0.95rem;
-      opacity: 0.9;
+    /* Counters */
+    .counter{
+      font-size: 0.92rem;
+      opacity: 0.85;
       margin-top: 6px;
+      color: #1f3a5f;
+      display:flex;
+      justify-content:flex-end;
+    }
+    .counter.bad{ color:#b00020; font-weight:600; opacity:0.95; }
+    .counter.good{ color:#0b6b2c; font-weight:600; opacity:0.95; }
+
+    /* stepper */
+    .step {
+      display: none;
+      border: 1px solid #e3e7f2;
+      border-radius: 12px;
+      padding: 14px;
+      background: #f7f9fe;
+      margin-top: 12px;
+    }
+    .step.active { display: block; }
+    .stepHeader {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .badge {
+      display:inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background:#eef3fa;
+      color:#1f3a5f;
+      font-weight:700;
+      font-size:0.85rem;
+      white-space: nowrap;
     }
 
-    ul {
-      padding-left: 18px;
+    /* gate modal */
+    .modalBackdrop{
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      z-index: 9999;
+    }
+    .modalBackdrop.show{ display:flex; }
+    .modal {
+      width: min(520px, 100%);
+      background: #ffffff;
+      color: #000000;
+      border-radius: 14px;
+      padding: 16px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+    }
+    .modal input{
+      width: 100%;
+      font-size: 16px;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      margin-top: 10px;
+    }
+    .row {
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    /* vocab game */
+    .gameGrid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .gameQ{
+      padding: 12px;
+      border: 1px solid #e3e7f2;
+      border-radius: 12px;
+      background: #f7f9fe;
+    }
+    .choices label{
+      display:block;
+      font-weight: 500;
+      margin-top: 8px;
+    }
+    .smallBtn{
+      padding: 10px 14px;
+      font-size: 14px;
+      border-radius: 8px;
     }
   </style>
 </head>
@@ -174,93 +233,666 @@
 </header>
 
 <main>
-
   <div class="nav">
-    <button onclick="showPage('worksheet')">Lesson 1 – Worksheet (start here)</button>
-    <button onclick="showPage('video')">Lesson 2 – Video activities</button>
+    <button type="button" onclick="showPage('worksheet')">Lesson 1 – Worksheet (start here)</button>
+    <button type="button" onclick="showLesson2()">Lesson 2 – Video (locked)</button>
+    <button type="button" onclick="showPage('vocab')" id="btnVocab" style="display:none;">Vocabulary game</button>
   </div>
 
-  <!-- PAGE 1 -->
+  <!-- PAGE: WORKSHEET -->
   <section id="page-worksheet">
-
     <div class="card">
       <h2>Before you start</h2>
-      <p>Use the following resource:</p>
-      <a href="https://www.spacefoundation.org/space_brief/us-space-law/" target="_blank">
-        https://www.spacefoundation.org/space_brief/us-space-law/
-      </a>
+      <p>Use the following resource to find relevant information before answering the questions:</p>
+      <p>
+        <a href="https://www.spacefoundation.org/space_brief/us-space-law/" target="_blank" rel="noopener noreferrer">
+          https://www.spacefoundation.org/space_brief/us-space-law/
+        </a>
+      </p>
+      <p class="hint">Tip: focus on key ideas about the role of the government, private companies, and resource rights.</p>
     </div>
 
     <div class="card">
       <h2>Lesson 1 – Asteroid Mining (Worksheet)</h2>
-      <p class="hint"><strong>Important:</strong> Complete Lesson 1 before Lesson 2.</p>
+      <p class="hint"><strong>How it works:</strong> Answer <strong>one question at a time</strong>. After each answer, you will get feedback. Then wait for correction with the class. If you finish early, you can do the vocabulary game.</p>
 
       <div class="figure">
-        <img src="images/asteroid-infographic.jpeg" alt="Asteroid mining infographic">
+        <img src="images/asteroid-infographic.jpeg" alt="Asteroid mining infographic" />
         <div class="caption">Study this infographic carefully before answering questions 1 and 2.</div>
       </div>
 
-      <label>1. Why are the 1958 Space Act and the 2015 Space Act both relevant today?</label>
-      <textarea id="q1" rows="4"></textarea>
+      <img src="https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=1400&q=60" alt="Space research" />
 
-      <label>2. Explain the different steps of the process shown in the infographic.</label>
-      <textarea id="q2" rows="4"></textarea>
+      <!-- Step 1 -->
+      <div class="step active" id="step-q1">
+        <div class="stepHeader">
+          <div><span class="badge">Question 1/4</span></div>
+          <div class="hint" style="margin:0;">Minimum: 25 words + key ideas</div>
+        </div>
 
-      <img src="https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=1400&q=60" alt="Space research">
+        <label>1. Why are the 1958 Space Act and the 2015 Space Act both relevant today?</label>
+        <textarea id="q1" rows="5" placeholder="Write in full sentences..."></textarea>
+        <div class="counter" id="c_q1">Words: 0/25</div>
 
-      <label>3. Why is water important in space?</label>
-      <textarea id="q3" rows="3"></textarea>
+        <button type="button" onclick="submitOne('q1')">Submit Q1</button>
+        <div class="feedback" id="fb_q1"></div>
 
-      <label>4. Does the document support or oppose asteroid mining? Why?</label>
-      <textarea id="q4" rows="4"></textarea>
+        <div class="answers" id="ans_q1">
+          <h3>Suggested answer (Q1)</h3>
+          <p>The 1958 Space Act set up a public framework for U.S. space activities, while the 2015 U.S. Commercial Space Launch Competitiveness Act supports commercial involvement and resource rights. Together, they shape today’s debate about space as a public mission and a commercial opportunity.</p>
+        </div>
+      </div>
 
-      <button onclick="checkWorksheetAnswers()">Submit my answers</button>
+      <!-- Step 2 -->
+      <div class="step" id="step-q2">
+        <div class="stepHeader">
+          <div><span class="badge">Question 2/4</span></div>
+          <div class="hint" style="margin:0;">Minimum: 25 words + steps vocabulary</div>
+        </div>
 
-      <div class="feedback" id="worksheetFeedback"></div>
-      <div class="answers" id="worksheetAnswers">
-        <h3>Suggested answers</h3>
-        <p>Answers appear here after submission.</p>
+        <label>2. Explain the different steps of the process shown in the infographic.</label>
+        <textarea id="q2" rows="5" placeholder="Describe the steps clearly..."></textarea>
+        <div class="counter" id="c_q2">Words: 0/25</div>
+
+        <button type="button" onclick="submitOne('q2')">Submit Q2</button>
+        <div class="feedback" id="fb_q2"></div>
+
+        <div class="answers" id="ans_q2">
+          <h3>Suggested answer (Q2)</h3>
+          <p>Possible steps: launch a spacecraft → locate/approach an asteroid → analyze composition → confirm valuable resources (e.g., water) → extract/collect materials → use them in space or send information/resources back.</p>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="step" id="step-q3">
+        <div class="stepHeader">
+          <div><span class="badge">Question 3/4</span></div>
+          <div class="hint" style="margin:0;">Minimum: 12 words + 2 key uses</div>
+        </div>
+
+        <label>3. Why is water important in space?</label>
+        <textarea id="q3" rows="4" placeholder="Use at least two reasons..."></textarea>
+        <div class="counter" id="c_q3">Words: 0/12</div>
+
+        <button type="button" onclick="submitOne('q3')">Submit Q3</button>
+        <div class="feedback" id="fb_q3"></div>
+
+        <div class="answers" id="ans_q3">
+          <h3>Suggested answer (Q3)</h3>
+          <p>Water is essential for life support (drinking, oxygen) and it can be processed to make rocket propellant, enabling longer missions and refuelling in space.</p>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="step" id="step-q4">
+        <div class="stepHeader">
+          <div><span class="badge">Question 4/4</span></div>
+          <div class="hint" style="margin:0;">Minimum: 25 words + opinion + justification</div>
+        </div>
+
+        <label>4. Does the document support or oppose asteroid mining? Why?</label>
+        <textarea id="q4" rows="5" placeholder="State a position and justify with evidence..."></textarea>
+        <div class="counter" id="c_q4">Words: 0/25</div>
+
+        <button type="button" onclick="submitOne('q4')">Submit Q4</button>
+        <div class="feedback" id="fb_q4"></div>
+
+        <div class="answers" id="ans_q4">
+          <h3>Suggested answer (Q4)</h3>
+          <p>Many such documents are generally supportive/optimistic because they highlight feasibility and benefits (especially water). A critical reading can also note what is missing (risks, ethics, environment). Any position is acceptable if justified with evidence from the document.</p>
+        </div>
+      </div>
+
+      <!-- End message -->
+      <div class="card" id="lesson1DoneCard" style="display:none;">
+        <h2>Lesson 1 completed ✅</h2>
+        <p><strong>Write that in your copybook ! ;)</strong></p>
+        <p class="hint">Lesson 2 is locked with a code. If you finish early, use the vocabulary game.</p>
+        <div class="row">
+          <button type="button" class="smallBtn" onclick="showPage('vocab')">Go to Vocabulary game</button>
+          <button type="button" class="smallBtn" onclick="showLesson2()">Unlock Lesson 2</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PAGE: VIDEO -->
+  <section id="page-video" style="display:none;">
+    <div class="card">
+      <h2>Lesson 2 – Video: Asteroid Mining</h2>
+      <p class="hint"><strong>This is Lesson 2.</strong> Only work on this section after completing Lesson 1.</p>
+
+      <div style="position:relative; padding-top:56.25%; border-radius:12px; overflow:hidden;">
+        <iframe
+          src="https://www.youtube.com/embed/erF17yO9VsE"
+          title="Asteroid Mining (YouTube)"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;">
+        </iframe>
+      </div>
+
+      <div class="card" style="margin-top:14px;">
+        <h3>Activities (Lesson 2)</h3>
+
+        <label>A1. In 2–3 sentences, explain what asteroid mining is.</label>
+        <textarea id="v1" rows="3" placeholder="Write your answer..."></textarea>
+        <div class="counter" id="c_v1">Words: 0/20</div>
+
+        <label>A2. List two reasons why companies might want to mine asteroids.</label>
+        <textarea id="v2" rows="2" placeholder="Write your answer..."></textarea>
+        <div class="counter" id="c_v2">Words: 0/10</div>
+
+        <label>A3. True or False (justify briefly): Mining in space could help missions go further.</label>
+        <textarea id="v3" rows="2" placeholder="True/False + justification..."></textarea>
+        <div class="counter" id="c_v3">Words: 0/8</div>
+
+        <label>A4. Multiple choice: Which resource is often described as especially useful in space?</label>
+        <div style="margin-top:6px;">
+          <label style="font-weight:normal; margin-top:8px;"><input type="radio" name="v4" value="gold"> Gold</label><br>
+          <label style="font-weight:normal; margin-top:8px;"><input type="radio" name="v4" value="water"> Water</label><br>
+          <label style="font-weight:normal; margin-top:8px;"><input type="radio" name="v4" value="diamonds"> Diamonds</label><br>
+          <label style="font-weight:normal; margin-top:8px;"><input type="radio" name="v4" value="coal"> Coal</label>
+        </div>
+
+        <label>A5. In your opinion, is asteroid mining mainly about money, competition, or necessity? Explain.</label>
+        <textarea id="v5" rows="3" placeholder="Write your opinion + one argument..."></textarea>
+        <div class="counter" id="c_v5">Words: 0/20</div>
+
+        <button type="button" onclick="submitLesson2()">Submit Lesson 2</button>
+        <div class="feedback" id="fb_l2"></div>
+
+        <div class="answers" id="ans_l2">
+          <h3>Suggested answers</h3>
+          <p><strong>A1.</strong> Asteroid mining is the idea of extracting useful resources (like water, metals, or minerals) from asteroids rather than only from Earth.</p>
+          <p><strong>A2.</strong> Examples: rare metals for industry; water for life support and fuel; reducing costs by using resources already in space; supporting long-term exploration.</p>
+          <p><strong>A3.</strong> True: if resources are available in space, spacecraft can refuel or get supplies without returning to Earth, making longer missions easier.</p>
+          <p><strong>A4.</strong> Water (because it supports life and can be turned into oxygen and fuel).</p>
+          <p><strong>A5.</strong> Accept any well-argued answer (money/competition/necessity) if justified with ideas from the video.</p>
+          <p style="font-weight:bold; margin-top:16px;">✏️ Write that in your copybook! ;)</p>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- PAGE 2 -->
-  <section id="page-video" style="display:none;">
-
+  <!-- PAGE: VOCAB GAME -->
+  <section id="page-vocab" style="display:none;">
     <div class="card">
-      <h2>Lesson 2 – Video</h2>
+      <h2>Vocabulary game (when you finish early)</h2>
+      <p class="hint">Do this quietly while waiting for correction. Try to get 6/6.</p>
 
-      <div style="position:relative;padding-top:56.25%;border-radius:12px;overflow:hidden;">
-        <iframe
-          src="https://www.youtube.com/embed/erF17yO9VsE"
-          style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
-          allowfullscreen>
-        </iframe>
+      <div class="gameGrid" id="gameGrid"></div>
+
+      <div class="row">
+        <button type="button" class="smallBtn" onclick="gradeGame()">Check my score</button>
+        <button type="button" class="smallBtn" onclick="newGame()">New round</button>
+        <button type="button" class="smallBtn" onclick="showPage('worksheet')">Back to Lesson 1</button>
       </div>
 
-      <label>A5. In your opinion, is asteroid mining mainly about money, competition, or necessity?</label>
-      <textarea id="v5" rows="3" placeholder="Write your opinion + one argument..."></textarea>
+      <div class="feedback" id="fb_game"></div>
     </div>
-
   </section>
 
 </main>
 
-<script>
-function showPage(page){
-  document.getElementById("page-worksheet").style.display =
-    page === "worksheet" ? "block" : "none";
-  document.getElementById("page-video").style.display =
-    page === "video" ? "block" : "none";
-  window.scrollTo(0,0);
-}
+<!-- Lesson 2 code modal -->
+<div class="modalBackdrop" id="codeModal">
+  <div class="modal">
+    <h2>Unlock Lesson 2</h2>
+    <p>Enter the code given by your teacher.</p>
+    <input id="codeInput" type="password" placeholder="Enter code…" autocomplete="off" />
+    <div class="row">
+      <button type="button" onclick="tryUnlock()">Unlock</button>
+      <button type="button" onclick="closeModal()">Cancel</button>
+    </div>
+    <div class="feedback" id="fb_code" style="display:none;"></div>
+  </div>
+</div>
 
-function checkWorksheetAnswers(){
-  document.getElementById("worksheetFeedback").style.display = "block";
-  document.getElementById("worksheetFeedback").textContent =
-    "Well done for trying 👏 Here are the suggested answers to help you.";
-  document.getElementById("worksheetAnswers").style.display = "block";
-}
+<script>
+  /* -------------------------
+     NAV + LESSON 2 LOCK
+  --------------------------*/
+  const LESSON2_CODE = "misterbruno";
+
+  function showPage(which){
+    const pages = ["worksheet","video","vocab"];
+    pages.forEach(p => {
+      const el = document.getElementById("page-" + p);
+      if (el) el.style.display = (p === which ? "block" : "none");
+    });
+    window.scrollTo({top: 0, behavior: "smooth"});
+  }
+
+  function openModal(){
+    document.getElementById("codeModal").classList.add("show");
+    const fb = document.getElementById("fb_code");
+    fb.style.display = "none";
+    fb.textContent = "";
+    document.getElementById("codeInput").value = "";
+    document.getElementById("codeInput").focus();
+  }
+
+  function closeModal(){
+    document.getElementById("codeModal").classList.remove("show");
+  }
+
+  function lesson2Unlocked(){
+    try { return sessionStorage.getItem("lesson2Unlocked") === "1"; }
+    catch(e){ return false; }
+  }
+
+  function markLesson2Unlocked(){
+    try { sessionStorage.setItem("lesson2Unlocked","1"); } catch(e){}
+  }
+
+  function showLesson2(){
+    // Require: Lesson 1 completed + code
+    const l1done = (function(){
+      try { return localStorage.getItem("lesson1Done") === "1"; } catch(e){ return false; }
+    })();
+
+    if (!l1done){
+      alert("Finish Lesson 1 first.");
+      showPage("worksheet");
+      return;
+    }
+    if (!lesson2Unlocked()){
+      openModal();
+      return;
+    }
+    showPage("video");
+  }
+
+  function tryUnlock(){
+    const v = (document.getElementById("codeInput").value || "").trim().toLowerCase();
+    const fb = document.getElementById("fb_code");
+    fb.style.display = "block";
+
+    if (v === LESSON2_CODE){
+      fb.textContent = "Unlocked ✅";
+      markLesson2Unlocked();
+      setTimeout(() => {
+        closeModal();
+        showPage("video");
+      }, 400);
+    } else {
+      fb.textContent = "Wrong code. Try again.";
+    }
+  }
+
+  /* -------------------------
+     ANTI-CHARABIA (spam + min words + keywords)
+  --------------------------*/
+  const attempts = { q1:0, q2:0, q3:0, q4:0, v1:0, v2:0, v3:0, v5:0 };
+
+  const rules = {
+    // Lesson 1
+    q1: { minWords: 25, mustHaveAll: ["1958"], mustHaveAny: ["2015","commercial","private","companies","company","resources","mining","space act","law"] },
+    q2: { minWords: 25, keywordsAnyMin: { list: ["launch","spacecraft","probe","locate","find","asteroid","analy","analyze","analysis","extract","mine","mining","data","process","steps","approach"], n: 3 } },
+    q3: { minWords: 12, keywordsAnyMin: { list: ["oxygen","fuel","rocket","drinking","drink","life support","propellant","water"], n: 2 } },
+    q4: { minWords: 25, keywordsAnyMin: { list: ["support","oppose","optimistic","critical","pro","con","because","since","evidence","benefit","risk","argument"], n: 2 } },
+
+    // Lesson 2
+    v1: { minWords: 20, keywordsAnyMin: { list: ["asteroid","mining","mine","extract","resources","metals","water"], n: 2 } },
+    v2: { minWords: 10 },
+    v3: { minWords: 8, mustHaveAny: ["true","false"], alsoAny: ["because","since","so"] },
+    v5: { minWords: 20, keywordsAnyMin: { list: ["money","profit","competition","race","necessity","need","because","future","missions","resources","industry"], n: 2 } }
+  };
+
+  function norm(s){ return (s||"").toLowerCase().trim(); }
+
+  function wordsCount(text){
+    const t = norm(text);
+    if (!t) return 0;
+    return t.split(/\s+/).filter(Boolean).length;
+  }
+
+  function hasAll(text, list){
+    const t = norm(text);
+    return list.every(k => t.includes(k));
+  }
+
+  function hasAny(text, list){
+    const t = norm(text);
+    return list.some(k => t.includes(k));
+  }
+
+  function countMatches(text, keywords){
+    const t = norm(text);
+    return keywords.reduce((acc,k)=>acc+(t.includes(k)?1:0),0);
+  }
+
+  // spam detection: long repeats, ababab, low unique ratio
+  function isSpam(text){
+    const raw = (text||"").trim();
+    if (raw.length < 10) return true; // too short => treated as incomplete for our use
+
+    const t = raw.toLowerCase().replace(/\s+/g,"");
+    if (t.length < 10) return true;
+
+    // long run of same char
+    let run = 1;
+    for (let i=1;i<t.length;i++){
+      if (t[i]===t[i-1]) { run++; if (run>=8) return true; }
+      else run = 1;
+    }
+
+    // ababab pattern
+    if (t.length>=12){
+      const a=t[0], b=t[1];
+      if (a && b){
+        let ok=true;
+        for (let i=0;i<t.length;i++){
+          const expected = (i%2===0)?a:b;
+          if (t[i]!==expected){ ok=false; break; }
+        }
+        if (ok) return true;
+      }
+    }
+
+    // low unique ratio
+    const uniq = new Set(t.split(""));
+    const ratio = uniq.size / t.length;
+    if (ratio < 0.18) return true;
+
+    return false;
+  }
+
+  function validate(fieldId, value){
+    const r = rules[fieldId] || {};
+    const wc = wordsCount(value);
+
+    if (isSpam(value)) return { ok:false, reason:"Your answer looks incomplete (random letters/repetition). Write full sentences." };
+    if (r.minWords && wc < r.minWords) return { ok:false, reason:`Please write at least ${r.minWords} words.` };
+
+    if (r.mustHaveAll && !hasAll(value, r.mustHaveAll)) return { ok:false, reason:`Missing key element(s): ${r.mustHaveAll.join(", ")}.` };
+    if (r.mustHaveAny && !hasAny(value, r.mustHaveAny)) return { ok:false, reason:"Add at least one relevant keyword (from the lesson)."};
+    if (r.alsoAny && !hasAny(value, r.alsoAny)) return { ok:false, reason:"Add a connector to justify your answer (because / since / so)."};
+
+    if (r.keywordsAnyMin){
+      const n = countMatches(value, r.keywordsAnyMin.list);
+      if (n < r.keywordsAnyMin.n) return { ok:false, reason:`Add more specific vocabulary (at least ${r.keywordsAnyMin.n} keywords).` };
+    }
+    return { ok:true, reason:"" };
+  }
+
+  /* -------------------------
+     COUNTERS
+  --------------------------*/
+  const counterMap = [
+    { id:"q1", counter:"c_q1", min:25 },
+    { id:"q2", counter:"c_q2", min:25 },
+    { id:"q3", counter:"c_q3", min:12 },
+    { id:"q4", counter:"c_q4", min:25 },
+    { id:"v1", counter:"c_v1", min:20 },
+    { id:"v2", counter:"c_v2", min:10 },
+    { id:"v3", counter:"c_v3", min:8 },
+    { id:"v5", counter:"c_v5", min:20 }
+  ];
+
+  function updateCounter(fieldId){
+    const cfg = counterMap.find(x=>x.id===fieldId);
+    if(!cfg) return;
+    const el = document.getElementById(cfg.id);
+    const c  = document.getElementById(cfg.counter);
+    if(!el||!c) return;
+
+    const wc = wordsCount(el.value);
+    c.textContent = `Words: ${wc}/${cfg.min}`;
+    c.classList.remove("bad","good");
+
+    if (el.value.trim().length===0) return;
+
+    if (isSpam(el.value)){
+      c.classList.add("bad");
+      c.textContent = `Words: ${wc}/${cfg.min} — write full sentences`;
+      return;
+    }
+
+    if (wc>=cfg.min) c.classList.add("good");
+    else c.classList.add("bad");
+  }
+
+  function attachCounters(){
+    counterMap.forEach(cfg=>{
+      const el = document.getElementById(cfg.id);
+      if(!el) return;
+      el.addEventListener("input", ()=>updateCounter(cfg.id));
+      el.addEventListener("blur",  ()=>updateCounter(cfg.id));
+      updateCounter(cfg.id);
+    });
+  }
+
+  /* -------------------------
+     STEP-BY-STEP SUBMISSION (Lesson 1)
+  --------------------------*/
+  const stepOrder = ["q1","q2","q3","q4"];
+
+  function setActiveStep(id){
+    stepOrder.forEach(q => {
+      const box = document.getElementById("step-" + q);
+      if (box) box.classList.toggle("active", q === id);
+    });
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  function unlockVocabButton(){
+    const b = document.getElementById("btnVocab");
+    if (b) b.style.display = "inline-block";
+  }
+
+  function showWaitMessage(fieldId, ok){
+    const fb = document.getElementById("fb_" + fieldId);
+    fb.style.display = "block";
+
+    if (ok){
+      fb.textContent = "✅ Good. Now wait for correction with the class. If you finish early, go to the Vocabulary game.";
+      unlockVocabButton();
+    }
+  }
+
+  function showSuggestedIfNeeded(fieldId){
+    const ans = document.getElementById("ans_" + fieldId);
+    if (ans) ans.style.display = "block";
+  }
+
+  function submitOne(fieldId){
+    const el = document.getElementById(fieldId);
+    const fb = document.getElementById("fb_" + fieldId);
+    const ans = document.getElementById("ans_" + fieldId);
+    if (!el || !fb) return;
+
+    const value = el.value.trim();
+    fb.style.display = "block";
+    if (ans) ans.style.display = "none";
+
+    attempts[fieldId] = (attempts[fieldId]||0) + 1;
+
+    const v = validate(fieldId, value);
+
+    if (!v.ok){
+      // Never unlock next step if spam/too short/etc.
+      if (attempts[fieldId] < 3){
+        fb.textContent = "Not yet. " + v.reason + " (Try again.)";
+      } else {
+        fb.textContent = "Third attempt reached. Read the suggested answer, then improve your answer in your copybook.";
+        showSuggestedIfNeeded(fieldId);
+        unlockVocabButton();
+      }
+      return;
+    }
+
+    // OK ✅
+    fb.textContent = "✅ Good. Now wait for correction with the class. If you finish early, go to the Vocabulary game.";
+    unlockVocabButton();
+
+    // Move to next step (sequential)
+    const idx = stepOrder.indexOf(fieldId);
+    if (idx >= 0 && idx < stepOrder.length - 1){
+      // we still move to next question, but the message tells them to wait
+      setActiveStep(stepOrder[idx+1]);
+    } else {
+      // Lesson 1 done
+      try { localStorage.setItem("lesson1Done","1"); } catch(e){}
+      document.getElementById("lesson1DoneCard").style.display = "block";
+      // show button label state
+      // (Lesson 2 still needs the code)
+    }
+  }
+
+  /* -------------------------
+     LESSON 2 SUBMISSION (keeps anti-charabia, 3 attempts, suggested answers)
+  --------------------------*/
+  function getRadioValue(name){
+    const el = document.querySelector('input[name="' + name + '"]:checked');
+    return el ? el.value : '';
+  }
+
+  function submitLesson2(){
+    const fb = document.getElementById("fb_l2");
+    const ans = document.getElementById("ans_l2");
+
+    const v1 = (document.getElementById("v1").value || "").trim();
+    const v2 = (document.getElementById("v2").value || "").trim();
+    const v3 = (document.getElementById("v3").value || "").trim();
+    const v4 = getRadioValue("v4");
+    const v5 = (document.getElementById("v5").value || "").trim();
+
+    fb.style.display = "block";
+    if (ans) ans.style.display = "none";
+
+    if (!v1 || !v2 || !v3 || !v4 || !v5){
+      fb.textContent = "Please answer all activities before submitting.";
+      return;
+    }
+
+    attempts.v1++; attempts.v2++; attempts.v3++; attempts.v5++;
+
+    const a1 = validate("v1", v1);
+    const a2 = validate("v2", v2);
+    const a3 = validate("v3", v3);
+    const a5 = validate("v5", v5);
+
+    const problems = [];
+    if (!a1.ok) problems.push(a1.reason);
+    if (!a2.ok) problems.push(a2.reason);
+    if (!a3.ok) problems.push(a3.reason);
+    if (v4 !== "water") problems.push("For A4, choose the option that matches the video (hint: it helps life + fuel).");
+    if (!a5.ok) problems.push(a5.reason);
+
+    const maxAttempt = Math.max(attempts.v1, attempts.v2, attempts.v3, attempts.v5);
+
+    if (problems.length > 0){
+      if (maxAttempt < 3){
+        fb.textContent = "Not yet. " + problems[0];
+      } else {
+        fb.textContent = "Third attempt reached. Here are the suggested answers to help you.";
+        if (ans) ans.style.display = "block";
+        unlockVocabButton();
+      }
+      return;
+    }
+
+    fb.textContent = "✅ Good. Wait for correction with the class.";
+    if (ans) ans.style.display = "block";
+    unlockVocabButton();
+  }
+
+  /* -------------------------
+     VOCAB GAME
+  --------------------------*/
+  const vocabItems = [
+    { term:"to extract", def:"to remove (a material) from something" },
+    { term:"resources", def:"useful materials that can be used or sold" },
+    { term:"to refuel", def:"to fill a vehicle with fuel again" },
+    { term:"propellant", def:"substance used to move a rocket forward" },
+    { term:"life support", def:"systems that keep humans alive (air/water/etc.)" },
+    { term:"to launch", def:"to send a rocket/spacecraft into space" }
+  ];
+
+  function shuffle(arr){
+    const a = arr.slice();
+    for (let i=a.length-1;i>0;i--){
+      const j = Math.floor(Math.random()*(i+1));
+      [a[i],a[j]]=[a[j],a[i]];
+    }
+    return a;
+  }
+
+  function newGame(){
+    const grid = document.getElementById("gameGrid");
+    const fb = document.getElementById("fb_game");
+    fb.style.display = "none";
+    fb.textContent = "";
+    grid.innerHTML = "";
+
+    const terms = shuffle(vocabItems);
+    const defs  = shuffle(vocabItems.map(x=>x.def));
+
+    terms.forEach((item, idx)=>{
+      const qId = "vg_" + idx;
+      const correct = item.def;
+
+      const choices = shuffle([correct, defs[(idx+1)%defs.length], defs[(idx+2)%defs.length], defs[(idx+3)%defs.length]])
+        .slice(0,4);
+
+      const box = document.createElement("div");
+      box.className = "gameQ";
+      box.innerHTML = `
+        <div class="stepHeader">
+          <div><span class="badge">Vocab ${idx+1}/6</span></div>
+          <div class="hint" style="margin:0;">Choose the correct definition</div>
+        </div>
+        <div style="font-weight:800; color:#1f3a5f; font-size:1.05rem;">${item.term}</div>
+        <div class="choices" style="margin-top:8px;">
+          ${choices.map((c,i)=>`
+            <label>
+              <input type="radio" name="${qId}" value="${escapeHtml(c)}">
+              ${escapeHtml(c)}
+            </label>
+          `).join("")}
+        </div>
+        <input type="hidden" id="${qId}_ans" value="${escapeHtml(correct)}">
+      `;
+      grid.appendChild(box);
+    });
+  }
+
+  function gradeGame(){
+    const fb = document.getElementById("fb_game");
+    let score = 0;
+
+    for (let i=0;i<6;i++){
+      const qId = "vg_" + i;
+      const correct = (document.getElementById(qId+"_ans").value || "");
+      const pickedEl = document.querySelector(`input[name="${qId}"]:checked`);
+      const picked = pickedEl ? pickedEl.value : "";
+
+      if (picked && picked === correct) score++;
+    }
+
+    fb.style.display = "block";
+    fb.textContent = `Score: ${score}/6. ${score>=5 ? "Great work." : "Try again."}`;
+  }
+
+  function escapeHtml(s){
+    return String(s)
+      .replaceAll("&","&amp;")
+      .replaceAll("<","&lt;")
+      .replaceAll(">","&gt;")
+      .replaceAll('"',"&quot;")
+      .replaceAll("'","&#039;");
+  }
+
+  /* init */
+  attachCounters();
+  newGame();
+
+  // show vocab button only after they have submitted at least one question
+  // (it will be toggled in unlockVocabButton())
 </script>
 
 </body>
