@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>To Infinity and Beyond – Interactive Worksheet</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(180deg, #0b1d33, #102a44);
+      color: #ffffff;
+      line-height: 1.6;
+    }
+    header {
+      padding: 24px 16px;
+      text-align: center;
+      background: radial-gradient(circle at top, #1f3a5f, #0b1d33);
+    }
+    header h1 {
+      margin: 0 0 8px 0;
+      font-size: 2rem;
+    }
+    header p {
+      max-width: 900px;
+      margin: 6px auto;
+      opacity: 0.92;
+    }
+    main {
+      padding: 16px;
+      max-width: 980px;
+      margin: auto;
+    }
+    .nav {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin: 0 0 16px 0;
+      flex-wrap: wrap;
+    }
+    .card {
+      background: #ffffff;
+      color: #000000;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 20px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    }
+    h2, h3 {
+      color: #1f3a5f;
+      margin-top: 0;
+    }
+    a {
+      color: #1f3a5f;
+      word-break: break-word;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin: 12px 0;
+      display: block;
+    }
+    label {
+      font-weight: 600;
+      display: block;
+      margin-top: 14px;
+    }
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+      resize: vertical;
+      box-sizing: border-box;
+    }
+    button {
+      padding: 12px 18px;
+      background: #1f3a5f;
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover { background: #162a45; }
+
+    .feedback {
+      margin-top: 14px;
+      padding: 12px;
+      border-radius: 8px;
+      background: #eef3fa;
+      color: #000000;
+      display: none;
+    }
+    .answers {
+      margin-top: 14px;
+      padding: 14px;
+      background: #e0e8f3;
+      border-left: 5px solid #1f3a5f;
+      display: none;
+    }
+    .pill {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #eef3fa;
+      color: #1f3a5f;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-right: 6px;
+    }
+    .hint {
+      font-size: 0.95rem;
+      opacity: 0.9;
+      margin-top: 6px;
+    }
+    ul { padding-left: 18px; }
+
+    .figure {
+      margin: 12px 0;
+      padding: 10px;
+      background: #f6f8fc;
+      border-radius: 10px;
+      border: 1px solid #e3e7f2;
+    }
+    .figure .caption {
+      font-size: 0.92rem;
+      opacity: 0.85;
+      margin-top: 6px;
+      color: #1f3a5f;
+    }
+
+    /* Word counters */
+    .counter{
+      font-size: 0.92rem;
+      opacity: 0.85;
+      margin-top: 6px;
+      color: #1f3a5f;
+      display:flex;
+      justify-content:flex-end;
+    }
+    .counter.bad{ color:#b00020; font-weight:600; opacity:0.95; }
+    .counter.good{ color:#0b6b2c; font-weight:600; opacity:0.95; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🚀 To Infinity and Beyond</h1>
+  <p><span class="pill">Key question</span> Space conquest: a way to make money, a competition or a necessity?</p>
+  <p><span class="pill">Theme</span> Space conquest: scientific innovations and responsibility</p>
+</header>
+
+<main>
+  <div class="nav">
+    <button type="button" onclick="showPage('worksheet')">Worksheet</button>
+    <button type="button" onclick="showPage('video')">Video activities</button>
+  </div>
+
+  <!-- PAGE 1: WORKSHEET -->
+  <section id="page-worksheet">
+
+    <div class="card">
+      <h2>Before you start</h2>
+      <p>Use the following resource to find relevant information before answering the questions:</p>
+      <p>
+        <a href="https://www.spacefoundation.org/space_brief/us-space-law/" target="_blank" rel="noopener noreferrer">
+          https://www.spacefoundation.org/space_brief/us-space-law/
+        </a>
+      </p>
+      <p class="hint">Tip: focus on key ideas about the role of the government, private companies, and resource rights.</p>
+    </div>
+
+    <div class="card">
+      <h2>Course 1: Asteroid Mining</h2>
+
+      <div class="figure">
+        <a href="https://ibb.co/QFScFqvK" target="_blank" rel="noopener noreferrer">
+          <img src="https://i.ibb.co/QFScFqvK/0194cb0d0c33a3098d9abb660c83b5b0.jpg" alt="Asteroid mining infographic" />
+        </a>
+        <div class="caption">(Tap the image to open it in full size.)</div>
+      </div>
+
+      <label>1. Why are the 1958 Space Act and the 2015 Space Act both relevant today?</label>
+      <textarea id="q1" rows="4" placeholder="Write your answer..."></textarea>
+      <div class="counter" id="c_q1">Words: 0/25</div>
+
+      <label>2. Explain the different steps of the process shown in the infographic.</label>
+      <textarea id="q2" rows="4" placeholder="Write your answer..."></textarea>
+      <div class="counter" id="c_q2">Words: 0/25</div>
+
+      <img src="https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=1400&q=60" alt="Space research" />
+
+      <label>3. Why is water important in space?</label>
+      <textarea id="q3" rows="3" placeholder="Write your answer..."></textarea>
+      <div class="counter" id="c_q3">Words: 0/12</div>
+
+      <label>4. Does the document support or oppose asteroid mining? Why?</label>
+      <textarea id="q4" rows="4" placeholder="Write your answer..."></textarea>
+      <div class="counter" id="c_q4">Words: 0/25</div>
+
+      <button type="button" onclick="checkWorksheetAnswers()">Submit my answers</button>
+
+      <div class="feedback" id="worksheetFeedback"></div>
+
+      <div class="answers" id="worksheetAnswers">
+        <h3>Suggested answers</h3>
+        <p><strong>1.</strong> The 1958 Space Act set up a public framework for U.S. space activities, while the 2015 U.S. Commercial Space Launch Competitiveness Act supports commercial involvement and resource rights. Together, they shape today’s debate about space as a public mission and a commercial opportunity.</p>
+        <p><strong>2.</strong> Possible steps: launch a spacecraft → locate/approach an asteroid → analyze composition → confirm valuable resources (e.g., water) → extract/collect materials → use them in space or send information/resources back.</p>
+        <p><strong>3.</strong> Water is essential for life support (drinking, oxygen) and it can be processed to make rocket propellant, enabling longer missions and refuelling in space.</p>
+        <p><strong>4.</strong> Many such documents are generally supportive/optimistic because they highlight feasibility and benefits (especially water). A critical reading can also note what is missing (risks, ethics, environment). Any position is acceptable if justified with evidence from the document.</p>
+      </div>
+
+      <div class="card" id="worksheetSummary" style="display:none;">
+        <h2>Summary</h2>
+        <p><strong>Your answers:</strong></p>
+        <ul>
+          <li><strong>Q1:</strong> <span id="ws1"></span></li>
+          <li><strong>Q2:</strong> <span id="ws2"></span></li>
+          <li><strong>Q3:</strong> <span id="ws3"></span></li>
+          <li><strong>Q4:</strong> <span id="ws4"></span></li>
+        </ul>
+        <p style="font-weight:bold; margin-top:16px;">✏️ Write that in your copybook! ;)</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PAGE 2: VIDEO ACTIVITIES -->
+  <section id="page-video" style="display:none;">
+
+    <div class="card">
+      <h2>Video: Asteroid Mining</h2>
+      <p>Watch the video and complete the activities below.</p>
+      <div style="position:relative; padding-top:56.25%; border-radius:12px; overflow:hidden;">
+        <iframe
+          src="https://www.youtube.com/embed/erF17yO9VsE"
+          title="Asteroid Mining (YouTube)"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;">
+        </iframe>
+      </div>
+      <p class="hint">Tip: take notes on (1) what resources matter, (2) why mining in space is useful, and (3) who might benefit.</p>
+    </div>
+
+    <div class="card">
+      <h3>Activities</h3>
+
+      <label>A1. In 2–3 sentences, explain what asteroid mining is.</label>
+      <textarea id="v1" rows="3" placeholder="Write your answer..."></textarea>
+      <div class="counter" id="c_v1">Words: 0/20</div>
+
+      <label>A2. List two reasons why companies might want to mine asteroids.</label>
+      <textarea id="v2" rows="2" placeholder="Write your answer..."></textarea>
+      <div class="counter" id="c_v2">Words: 0/10</div>
+
+      <label>A3. True or False (justify briefly): Mining in space could help missions go further.</label>
+      <textarea id="v3" rows="2" placeholder="True/False + justification..."></textarea>
+      <div class="counter" id="c_v3">Words: 0/8</div>
+
+      <label>A4. Multiple choice: Which resource is often described as especially useful in space?</label>
+      <div style="margin-top:6px;">
+        <label style="font-weight:normal; margin-top:8px;"><input type="radio" name="v4" value="gold"> Gold</label><br>
+        <label style="font-weight:normal; margin-top:8px;"><input type="radio" name="v4" value="water"> Water</label><br>
+        <label style="font-weight:normal; margin-top:8px;"><input type="radio" name="v4" value="diamonds"> Diamonds</label><br>
+        <label style="font-weight:normal; margin-top:8px;"><input type="radio" name="v4" value="coal"> Coal</label>
+      </div>
+
+      <label>A5. In your opinion, is asteroid mining mainly about money, competition, or necessity? Explain.</label>
+      <textarea id="v5" rows="3" placeholder="Write your opinion + one argument..."></textarea>
+      <div class="counter" id="c_v5">Words: 0/20</div>
+
+      <button type="button" onclick="checkVideoAnswers()">Submit my answers</button>
+
+      <div class="feedback" id="videoFeedback"></div>
+
+      <div class="answers" id="videoAnswers">
+        <h3>Suggested answers</h3>
+        <p><strong>A1.</strong> Asteroid mining is the idea of extracting useful resources (like water, metals, or minerals) from asteroids rather than only from Earth.</p>
+        <p><strong>A2.</strong> Examples: rare metals for industry; water for life support and fuel; reducing costs by using resources already in space; supporting long-term exploration.</p>
+        <p><strong>A3.</strong> True: if resources are available in space, spacecraft can refuel or get supplies without returning to Earth, making longer missions easier.</p>
+        <p><strong>A4.</strong> Water (because it supports life and can be turned into oxygen and fuel).</p>
+        <p><strong>A5.</strong> Accept any well-argued answer. Example: “Necessity” for future exploration; “Money” for profits; “Competition” for leadership and influence.</p>
+      </div>
+
+      <div class="card" id="videoSummary" style="display:none;">
+        <h2>Summary</h2>
+        <p><strong>Your answers:</strong></p>
+        <ul>
+          <li><strong>A1:</strong> <span id="vs1"></span></li>
+          <li><strong>A2:</strong> <span id="vs2"></span></li>
+          <li><strong>A3:</strong> <span id="vs3"></span></li>
+          <li><strong>A4:</strong> <span id="vs4"></span></li>
+          <li><strong>A5:</strong> <span id="vs5"></span></li>
+        </ul>
+        <p style="font-weight:bold; margin-top:16px;">✏️ Write that in your copybook! ;)</p>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<script>
+  let worksheetAttempts = 0;
+  let videoAttempts = 0;
+
+  // --- Minimum requirements (anti-random typing) ---
+  const rules = {
+    q1: { minWords: 25, mustHaveAll: ['1958'], mustHaveAny: ['2015','commercial','private','company','companies','resources','mining','space act'] },
+    q2: { minWords: 25, keywordsAnyMin: { list: ['launch','spacecraft','probe','locate','find','asteroid','analy','analyze','analysis','extract','mine','mining','data','process','steps'], n: 3 } },
+    q3: { minWords: 12, keywordsAnyMin: { list: ['oxygen','fuel','rocket','drinking','drink','life support','propellant','water'], n: 2 } },
+    q4: { minWords: 25, keywordsAnyMin: { list: ['support','oppose','optimistic','critical','pro','con','because','since','evidence','benefit','risk'], n: 2 } },
+
+    v1: { minWords: 20, keywordsAnyMin: { list: ['asteroid','mining','mine','extract','resources','metals','water'], n: 2 } },
+    v2: { minWords: 10 },
+    v3: { minWords: 8, mustHaveAny: ['true','false'], alsoAny: ['because','since','so'] },
+    v5: { minWords: 20, keywordsAnyMin: { list: ['money','profit','competition','race','necessity','need','because','future','missions','resources'], n: 2 } }
+  };
+
+  function showPage(which) {
+    const w = document.getElementById('page-worksheet');
+    const v = document.getElementById('page-video');
+    if (which === 'video') { w.style.display='none'; v.style.display='block'; }
+    else { v.style.display='none'; w.style.display='block'; }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function norm(s){ return (s||'').toLowerCase().trim(); }
+  function wordsCount(text){
+    const t = norm(text);
+    if (!t) return 0;
+    return t.split(/\s+/).filter(Boolean).length;
+  }
+  function countMatches(text, keywords){
+    const t = norm(text);
+    return keywords.reduce((acc,k)=>acc+(t.includes(k)?1:0),0);
+  }
+  function hasAll(text, list){
+    const t = norm(text);
+    return list.every(k=>t.includes(k));
+  }
+  function hasAny(text, list){
+    const t = norm(text);
+    return list.some(k=>t.includes(k));
+  }
+
+  // Anti-spam: long run of same char, ababab pattern, low unique ratio
+  function isSpam(text){
+    const raw = (text||'').trim();
+    if (raw.length < 10) return false;
+
+    const t = raw.toLowerCase().replace(/\s+/g,'');
+    if (t.length < 10) return false;
+
+    // long same-char run
+    let run = 1;
+    for (let i=1;i<t.length;i++){
+      if (t[i]===t[i-1]) { run++; if (run>=8) return true; }
+      else run = 1;
+    }
+
+    // ababab pattern
+    if (t.length>=12){
+      const a=t[0], b=t[1];
+      if (a && b){
+        let ok=true;
+        for (let i=0;i<t.length;i++){
+          const expected = (i%2===0)?a:b;
+          if (t[i]!==expected){ ok=false; break; }
+        }
+        if (ok) return true;
+      }
+    }
+
+    // low unique ratio
+    const uniq = new Set(t.split(''));
+    const ratio = uniq.size / t.length;
+    if (ratio < 0.18) return true;
+
+    return false;
+  }
+
+  function validate(fieldId, value){
+    const r = rules[fieldId] || {};
+    const wc = wordsCount(value);
+
+    if (isSpam(value)) return { ok:false, reason:'Your answer looks incomplete (random letters/repetition). Write full sentences.' };
+    if (r.minWords && wc < r.minWords) return { ok:false, reason:`Please write at least ${r.minWords} words.` };
+
+    if (r.mustHaveAll && !hasAll(value, r.mustHaveAll)) return { ok:false, reason:`Missing key element(s): ${r.mustHaveAll.join(', ')}.` };
+    if (r.mustHaveAny && !hasAny(value, r.mustHaveAny)) return { ok:false, reason:'Add at least one relevant keyword (e.g., 2015 / commercial / private / resources…).'};
+    if (r.alsoAny && !hasAny(value, r.alsoAny)) return { ok:false, reason:'Add a connector to justify your answer (because / since / so).'};
+
+    if (r.keywordsAnyMin){
+      const n = countMatches(value, r.keywordsAnyMin.list);
+      if (n < r.keywordsAnyMin.n) return { ok:false, reason:`Add more specific vocabulary (at least ${r.keywordsAnyMin.n} keywords).` };
+    }
+    return { ok:true, reason:'' };
+  }
+
+  function getRadioValue(name) {
+    const el = document.querySelector('input[name="' + name + '"]:checked');
+    return el ? el.value : '';
+  }
+
+  // Word counters setup
+  const counterMap = [
+    { id:'q1', counter:'c_q1', min:25 },
+    { id:'q2', counter:'c_q2', min:25 },
+    { id:'q3', counter:'c_q3', min:12 },
+    { id:'q4', counter:'c_q4', min:25 },
+    { id:'v1', counter:'c_v1', min:20 },
+    { id:'v2', counter:'c_v2', min:10 },
+    { id:'v3', counter:'c_v3', min:8 },
+    { id:'v5', counter:'c_v5', min:20 }
+  ];
+
+  function updateCounter(fieldId){
+    const cfg = counterMap.find(x=>x.id===fieldId);
+    if(!cfg) return;
+    const el = document.getElementById(cfg.id);
+    const c  = document.getElementById(cfg.counter);
+    if(!el||!c) return;
+
+    const wc = wordsCount(el.value);
+    c.textContent = `Words: ${wc}/${cfg.min}`;
+    c.classList.remove('bad','good');
+
+    if (el.value.trim().length===0) return;
+
+    if (isSpam(el.value)){
+      c.classList.add('bad');
+      c.textContent = `Words: ${wc}/${cfg.min} — write full sentences`;
+      return;
+    }
+
+    if (wc>=cfg.min) c.classList.add('good');
+    else c.classList.add('bad');
+  }
+
+  function attachCounters(){
+    counterMap.forEach(cfg=>{
+      const el = document.getElementById(cfg.id);
+      if(!el) return;
+      el.addEventListener('input', ()=>updateCounter(cfg.id));
+      el.addEventListener('blur',  ()=>updateCounter(cfg.id));
+      updateCounter(cfg.id);
+    });
+  }
+
+  function checkWorksheetAnswers() {
+    const q1 = document.getElementById('q1').value.trim();
+    const q2 = document.getElementById('q2').value.trim();
+    const q3 = document.getElementById('q3').value.trim();
+    const q4 = document.getElementById('q4').value.trim();
+
+    const feedback = document.getElementById('worksheetFeedback');
+    const answers = document.getElementById('worksheetAnswers');
+
+    if (!q1 || !q2 || !q3 || !q4) {
+      feedback.style.display = 'block';
+      feedback.textContent = 'Please answer all questions before submitting.';
+      return;
+    }
+
+    worksheetAttempts++;
+
+    // Minimum gate (always required, even after 3 attempts)
+    const v1 = validate('q1', q1);
+    const v2 = validate('q2', q2);
+    const v3 = validate('q3', q3);
+    const v4 = validate('q4', q4);
+    const problems = [v1,v2,v3,v4].filter(x=>!x.ok).map(x=>x.reason);
+
+    if (problems.length > 0) {
+      feedback.style.display = 'block';
+      feedback.textContent = (worksheetAttempts < 3)
+        ? ('Good attempt 👍 Improve your answers: ' + problems[0])
+        : ('Almost there 👍 You still need to meet the minimum requirements: ' + problems[0]);
+      return;
+    }
+
+    feedback.style.display = 'block';
+    feedback.textContent = 'Well done for trying 👏 Here are the suggested answers to help you.';
+    answers.style.display = 'block';
+
+    document.getElementById('ws1').textContent = q1;
+    document.getElementById('ws2').textContent = q2;
+    document.getElementById('ws3').textContent = q3;
+    document.getElementById('ws4').textContent = q4;
+    document.getElementById('worksheetSummary').style.display = 'block';
+  }
+
+  function checkVideoAnswers() {
+    const v1 = document.getElementById('v1').value.trim();
+    const v2 = document.getElementById('v2').value.trim();
+    const v3 = document.getElementById('v3').value.trim();
+    const v4 = getRadioValue('v4');
+    const v5 = document.getElementById('v5').value.trim();
+
+    const feedback = document.getElementById('videoFeedback');
+    const answers = document.getElementById('videoAnswers');
+
+    if (!v1 || !v2 || !v3 || !v4 || !v5) {
+      feedback.style.display = 'block';
+      feedback.textContent = 'Please answer all activities before submitting.';
+      return;
+    }
+
+    videoAttempts++;
+
+    const a1 = validate('v1', v1);
+    const a2 = validate('v2', v2);
+    const a3 = validate('v3', v3);
+    const a5 = validate('v5', v5);
+
+    const problems = [a1,a2,a3,a5].filter(x=>!x.ok).map(x=>x.reason);
+    if (v4 !== 'water') problems.unshift('For A4, choose the option that matches the video (hint: it helps life + fuel).');
+
+    if (problems.length > 0) {
+      feedback.style.display = 'block';
+      feedback.textContent = (videoAttempts < 3)
+        ? ('Good attempt 👍 Improve your answers: ' + problems[0])
+        : ('Almost there 👍 You still need to meet the minimum requirements: ' + problems[0]);
+      return;
+    }
+
+    feedback.style.display = 'block';
+    feedback.textContent = 'Well done for trying 👏 Here are the suggested answers to help you.';
+    answers.style.display = 'block';
+
+    document.getElementById('vs1').textContent = v1;
+    document.getElementById('vs2').textContent = v2;
+    document.getElementById('vs3').textContent = v3;
+    document.getElementById('vs4').textContent = v4;
+    document.getElementById('vs5').textContent = v5;
+    document.getElementById('videoSummary').style.display = 'block';
+  }
+
+  attachCounters();
+</script>
+
+</body>
+</html>
