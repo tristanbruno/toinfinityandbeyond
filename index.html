@@ -55,7 +55,6 @@
       border-radius: 10px;
       border: 1px solid #e3e7f2;
     }
-    /* force the infographic to fill the card width */
     .figure img {
       width: 100%;
       height: auto;
@@ -254,103 +253,120 @@
 
     <div class="card">
       <h2>Lesson 1 – Asteroid Mining (Worksheet)</h2>
-      <p class="hint"><strong>How it works:</strong> Answer <strong>one question at a time</strong>. After each answer, you will get feedback. Then wait for correction with the class. If you finish early, you can do the vocabulary game.</p>
+      <p class="hint">
+        <strong>How it works:</strong> Answer <strong>one question at a time</strong>.
+        You must write at least <strong>15 words</strong> and use <strong>key ideas</strong>.
+        No maximum. If your answer is not correct, you will see a correction.
+      </p>
 
       <div class="figure">
         <img src="images/asteroid-infographic.jpeg" alt="Asteroid mining infographic" />
         <div class="caption">Study this infographic carefully before answering questions 1 and 2.</div>
-      
+
         <!-- Step 1 -->
-      <div class="step active" id="step-q1">
-        <div class="stepHeader">
-          <div><span class="badge">Question 1/4</span></div>
-          <div class="hint" style="margin:0;">Minimum: 25 words + key ideas</div>
+        <div class="step active" id="step-q1">
+          <div class="stepHeader">
+            <div><span class="badge">Question 1/4</span></div>
+            <div class="hint" style="margin:0;">Minimum: 15 words (no maximum)</div>
+          </div>
+
+          <label>1. Why are the 1958 Space Act and the 2015 Space Act both relevant today?</label>
+          <textarea id="q1" rows="5" placeholder="Write in full sentences..."></textarea>
+          <div class="counter" id="c_q1">Words: 0/15</div>
+
+          <button type="button" onclick="submitOne('q1')">Submit Q1</button>
+          <button type="button" class="smallBtn" id="next_q1" onclick="goNext('q1')" style="display:none; margin-left:10px;">Next</button>
+
+          <div class="feedback" id="fb_q1"></div>
+
+          <div class="answers" id="ans_q1">
+            <h3>Correction (Q1)</h3>
+            <p>The 1958 Space Act set up a public framework for U.S. space activities, while the 2015 U.S. Commercial Space Launch Competitiveness Act supports commercial involvement and resource rights. Together, they shape today’s debate about space as a public mission and a commercial opportunity.</p>
+          </div>
         </div>
 
-        <label>1. Why are the 1958 Space Act and the 2015 Space Act both relevant today?</label>
-        <textarea id="q1" rows="5" placeholder="Write in full sentences..."></textarea>
-        <div class="counter" id="c_q1">Words: 0/25</div>
+        <!-- Step 2 -->
+        <div class="step" id="step-q2">
+          <div class="stepHeader">
+            <div><span class="badge">Question 2/4</span></div>
+            <div class="hint" style="margin:0;">Minimum: 15 words (no maximum)</div>
+          </div>
 
-        <button type="button" onclick="submitOne('q1')">Submit Q1</button>
-        <div class="feedback" id="fb_q1"></div>
+          <label>2. Explain the different steps of the process shown in the infographic.</label>
+          <textarea id="q2" rows="5" placeholder="Describe the steps clearly..."></textarea>
+          <div class="counter" id="c_q2">Words: 0/15</div>
 
-        <div class="answers" id="ans_q1">
-          <h3>Suggested answer (Q1)</h3>
-          <p>The 1958 Space Act set up a public framework for U.S. space activities, while the 2015 U.S. Commercial Space Launch Competitiveness Act supports commercial involvement and resource rights. Together, they shape today’s debate about space as a public mission and a commercial opportunity.</p>
+          <button type="button" onclick="submitOne('q2')">Submit Q2</button>
+          <button type="button" class="smallBtn" id="next_q2" onclick="goNext('q2')" style="display:none; margin-left:10px;">Next</button>
+
+          <div class="feedback" id="fb_q2"></div>
+
+          <div class="answers" id="ans_q2">
+            <h3>Correction (Q2)</h3>
+            <p>Possible steps: launch a spacecraft → locate/approach an asteroid → analyze composition → confirm valuable resources (e.g., water) → extract/collect materials → use them in space or send information/resources back.</p>
+          </div>
         </div>
+
+        <!-- Step 3 -->
+        <div class="step" id="step-q3">
+          <div class="stepHeader">
+            <div><span class="badge">Question 3/4</span></div>
+            <div class="hint" style="margin:0;">Minimum: 15 words (no maximum)</div>
+          </div>
+
+          <label>3. Why is water important in space?</label>
+          <textarea id="q3" rows="4" placeholder="Use at least two reasons..."></textarea>
+          <div class="counter" id="c_q3">Words: 0/15</div>
+
+          <button type="button" onclick="submitOne('q3')">Submit Q3</button>
+          <button type="button" class="smallBtn" id="next_q3" onclick="goNext('q3')" style="display:none; margin-left:10px;">Next</button>
+
+          <div class="feedback" id="fb_q3"></div>
+
+          <div class="answers" id="ans_q3">
+            <h3>Correction (Q3)</h3>
+            <p>Water is essential for life support (drinking, oxygen) and it can be processed to make rocket propellant, enabling longer missions and refuelling in space.</p>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="step" id="step-q4">
+          <div class="stepHeader">
+            <div><span class="badge">Question 4/4</span></div>
+            <div class="hint" style="margin:0;">Minimum: 15 words (no maximum)</div>
+          </div>
+
+          <label>4. Does the document support or oppose asteroid mining? Why?</label>
+          <textarea id="q4" rows="5" placeholder="State a position and justify with evidence..."></textarea>
+          <div class="counter" id="c_q4">Words: 0/15</div>
+
+          <button type="button" onclick="submitOne('q4')">Submit Q4</button>
+          <button type="button" class="smallBtn" id="next_q4" onclick="goNext('q4')" style="display:none; margin-left:10px;">Finish</button>
+
+          <div class="feedback" id="fb_q4"></div>
+
+          <div class="answers" id="ans_q4">
+            <h3>Correction (Q4)</h3>
+            <p>Many such documents are generally supportive/optimistic because they highlight feasibility and benefits (especially water). A critical reading can also note what is missing (risks, ethics, environment). Any position is acceptable if justified with evidence from the document.</p>
+          </div>
+        </div>
+
+        <!-- End message -->
+        <div class="card" id="lesson1DoneCard" style="display:none;">
+          <h2>Lesson 1 completed ✅</h2>
+          <p><strong>Write that in your copybook ! ;)</strong></p>
+
+          <h3>Summary / Course</h3>
+          <p id="courseSummary" class="hint" style="opacity:1; color:#000;"></p>
+
+          <p class="hint">Lesson 2 is locked with a code. If you finish early, use the vocabulary game.</p>
+          <div class="row">
+            <button type="button" class="smallBtn" onclick="showPage('vocab')">Go to Vocabulary game</button>
+            <button type="button" class="smallBtn" onclick="showLesson2()">Unlock Lesson 2</button>
+          </div>
+        </div>
+
       </div>
-
-      <!-- Step 2 -->
-      <div class="step" id="step-q2">
-        <div class="stepHeader">
-          <div><span class="badge">Question 2/4</span></div>
-          <div class="hint" style="margin:0;">Minimum: 25 words + steps vocabulary</div>
-        </div>
-
-        <label>2. Explain the different steps of the process shown in the infographic.</label>
-        <textarea id="q2" rows="5" placeholder="Describe the steps clearly..."></textarea>
-        <div class="counter" id="c_q2">Words: 0/25</div>
-
-        <button type="button" onclick="submitOne('q2')">Submit Q2</button>
-        <div class="feedback" id="fb_q2"></div>
-
-        <div class="answers" id="ans_q2">
-          <h3>Suggested answer (Q2)</h3>
-          <p>Possible steps: launch a spacecraft → locate/approach an asteroid → analyze composition → confirm valuable resources (e.g., water) → extract/collect materials → use them in space or send information/resources back.</p>
-        </div>
-      </div>
-
-      <!-- Step 3 -->
-      <div class="step" id="step-q3">
-        <div class="stepHeader">
-          <div><span class="badge">Question 3/4</span></div>
-          <div class="hint" style="margin:0;">Minimum: 12 words + 2 key uses</div>
-        </div>
-
-        <label>3. Why is water important in space?</label>
-        <textarea id="q3" rows="4" placeholder="Use at least two reasons..."></textarea>
-        <div class="counter" id="c_q3">Words: 0/12</div>
-
-        <button type="button" onclick="submitOne('q3')">Submit Q3</button>
-        <div class="feedback" id="fb_q3"></div>
-
-        <div class="answers" id="ans_q3">
-          <h3>Suggested answer (Q3)</h3>
-          <p>Water is essential for life support (drinking, oxygen) and it can be processed to make rocket propellant, enabling longer missions and refuelling in space.</p>
-        </div>
-      </div>
-
-      <!-- Step 4 -->
-      <div class="step" id="step-q4">
-        <div class="stepHeader">
-          <div><span class="badge">Question 4/4</span></div>
-          <div class="hint" style="margin:0;">Minimum: 25 words + opinion + justification</div>
-        </div>
-
-        <label>4. Does the document support or oppose asteroid mining? Why?</label>
-        <textarea id="q4" rows="5" placeholder="State a position and justify with evidence..."></textarea>
-        <div class="counter" id="c_q4">Words: 0/25</div>
-
-        <button type="button" onclick="submitOne('q4')">Submit Q4</button>
-        <div class="feedback" id="fb_q4"></div>
-
-        <div class="answers" id="ans_q4">
-          <h3>Suggested answer (Q4)</h3>
-          <p>Many such documents are generally supportive/optimistic because they highlight feasibility and benefits (especially water). A critical reading can also note what is missing (risks, ethics, environment). Any position is acceptable if justified with evidence from the document.</p>
-        </div>
-      </div>
-
-      <!-- End message -->
-      <div class="card" id="lesson1DoneCard" style="display:none;">
-        <h2>Lesson 1 completed ✅</h2>
-        <p><strong>Write that in your copybook ! ;)</strong></p>
-        <p class="hint">Lesson 2 is locked with a code. If you finish early, use the vocabulary game.</p>
-        <div class="row">
-          <button type="button" class="smallBtn" onclick="showPage('vocab')">Go to Vocabulary game</button>
-          <button type="button" class="smallBtn" onclick="showLesson2()">Unlock Lesson 2</button>
-        </div>
-      </div>
-
     </div>
   </section>
 
@@ -375,15 +391,15 @@
 
         <label>A1. In 2–3 sentences, explain what asteroid mining is.</label>
         <textarea id="v1" rows="3" placeholder="Write your answer..."></textarea>
-        <div class="counter" id="c_v1">Words: 0/20</div>
+        <div class="counter" id="c_v1">Words: 0/15</div>
 
         <label>A2. List two reasons why companies might want to mine asteroids.</label>
         <textarea id="v2" rows="2" placeholder="Write your answer..."></textarea>
-        <div class="counter" id="c_v2">Words: 0/10</div>
+        <div class="counter" id="c_v2">Words: 0/15</div>
 
         <label>A3. True or False (justify briefly): Mining in space could help missions go further.</label>
         <textarea id="v3" rows="2" placeholder="True/False + justification..."></textarea>
-        <div class="counter" id="c_v3">Words: 0/8</div>
+        <div class="counter" id="c_v3">Words: 0/15</div>
 
         <label>A4. Multiple choice: Which resource is often described as especially useful in space?</label>
         <div style="margin-top:6px;">
@@ -395,13 +411,13 @@
 
         <label>A5. In your opinion, is asteroid mining mainly about money, competition, or necessity? Explain.</label>
         <textarea id="v5" rows="3" placeholder="Write your opinion + one argument..."></textarea>
-        <div class="counter" id="c_v5">Words: 0/20</div>
+        <div class="counter" id="c_v5">Words: 0/15</div>
 
         <button type="button" onclick="submitLesson2()">Submit Lesson 2</button>
         <div class="feedback" id="fb_l2"></div>
 
         <div class="answers" id="ans_l2">
-          <h3>Suggested answers</h3>
+          <h3>Correction / Suggested answers</h3>
           <p><strong>A1.</strong> Asteroid mining is the idea of extracting useful resources (like water, metals, or minerals) from asteroids rather than only from Earth.</p>
           <p><strong>A2.</strong> Examples: rare metals for industry; water for life support and fuel; reducing costs by using resources already in space; supporting long-term exploration.</p>
           <p><strong>A3.</strong> True: if resources are available in space, spacecraft can refuel or get supplies without returning to Earth, making longer missions easier.</p>
@@ -486,7 +502,6 @@
   }
 
   function showLesson2(){
-    // Require: Lesson 1 completed + code
     const l1done = (function(){
       try { return localStorage.getItem("lesson1Done") === "1"; } catch(e){ return false; }
     })();
@@ -521,23 +536,9 @@
   }
 
   /* -------------------------
-     ANTI-CHARABIA (spam + min words + keywords)
+     HELPERS
   --------------------------*/
-  const attempts = { q1:0, q2:0, q3:0, q4:0, v1:0, v2:0, v3:0, v5:0 };
-
-  const rules = {
-    // Lesson 1
-    q1: { minWords: 25, mustHaveAll: ["1958"], mustHaveAny: ["2015","commercial","private","companies","company","resources","mining","space act","law"] },
-    q2: { minWords: 25, keywordsAnyMin: { list: ["launch","spacecraft","probe","locate","find","asteroid","analy","analyze","analysis","extract","mine","mining","data","process","steps","approach"], n: 3 } },
-    q3: { minWords: 12, keywordsAnyMin: { list: ["oxygen","fuel","rocket","drinking","drink","life support","propellant","water"], n: 2 } },
-    q4: { minWords: 25, keywordsAnyMin: { list: ["support","oppose","optimistic","critical","pro","con","because","since","evidence","benefit","risk","argument"], n: 2 } },
-
-    // Lesson 2
-    v1: { minWords: 20, keywordsAnyMin: { list: ["asteroid","mining","mine","extract","resources","metals","water"], n: 2 } },
-    v2: { minWords: 10 },
-    v3: { minWords: 8, mustHaveAny: ["true","false"], alsoAny: ["because","since","so"] },
-    v5: { minWords: 20, keywordsAnyMin: { list: ["money","profit","competition","race","necessity","need","because","future","missions","resources","industry"], n: 2 } }
-  };
+  const MIN_WORDS = 15;
 
   function norm(s){ return (s||"").toLowerCase().trim(); }
 
@@ -545,11 +546,6 @@
     const t = norm(text);
     if (!t) return 0;
     return t.split(/\s+/).filter(Boolean).length;
-  }
-
-  function hasAll(text, list){
-    const t = norm(text);
-    return list.every(k => t.includes(k));
   }
 
   function hasAny(text, list){
@@ -562,72 +558,168 @@
     return keywords.reduce((acc,k)=>acc+(t.includes(k)?1:0),0);
   }
 
-  // spam detection: long repeats, ababab, low unique ratio
+  /* -------------------------
+     ANTI-CHARABIA (SOFT BUT REAL GATE)
+     - min words: 15 (no maximum)
+     - spam detection
+     - keywords required (minimal)
+  --------------------------*/
   function isSpam(text){
     const raw = (text||"").trim();
-    if (raw.length < 10) return true; // too short => treated as incomplete for our use
+    if (raw.length < 10) return true;
 
-    const t = raw.toLowerCase().replace(/\s+/g,"");
+    const t = raw.toLowerCase().replace(/[\s\W_]+/g,"");
     if (t.length < 10) return true;
 
-    // long run of same char
     let run = 1;
     for (let i=1;i<t.length;i++){
-      if (t[i]===t[i-1]) { run++; if (run>=8) return true; }
+      if (t[i]===t[i-1]) { run++; if (run>=9) return true; }
       else run = 1;
     }
 
-    // ababab pattern
-    if (t.length>=12){
+    if (t.length>=14){
       const a=t[0], b=t[1];
       if (a && b){
         let ok=true;
         for (let i=0;i<t.length;i++){
-          const expected = (i%2===0)?a:b;
-          if (t[i]!==expected){ ok=false; break; }
+          if (t[i] !== (i%2===0 ? a : b)) { ok=false; break; }
         }
         if (ok) return true;
       }
     }
 
-    // low unique ratio
     const uniq = new Set(t.split(""));
     const ratio = uniq.size / t.length;
-    if (ratio < 0.18) return true;
+    if (ratio < 0.16) return true;
 
     return false;
   }
 
-  function validate(fieldId, value){
-    const r = rules[fieldId] || {};
-    const wc = wordsCount(value);
+  const gateRules = {
+    // Lesson 1
+    q1: { minWords: MIN_WORDS, keywordsAnyMin: { list: ["1958","2015","space act","commercial","private","companies","law","resources","rights"], n: 2 } },
+    q2: { minWords: MIN_WORDS, keywordsAnyMin: { list: ["launch","spacecraft","asteroid","approach","locate","find","analyze","analysis","composition","extract","collect","process","steps"], n: 3 } },
+    q3: { minWords: MIN_WORDS, keywordsAnyMin: { list: ["oxygen","life support","drink","drinking","fuel","propellant","rocket","refuel","hydrogen"], n: 2 } },
+    q4: { minWords: MIN_WORDS, keywordsAnyMin: { list: ["support","oppose","because","since","evidence","benefit","risk","ethics","environment","feasible"], n: 2 } },
 
-    if (isSpam(value)) return { ok:false, reason:"Your answer looks incomplete (random letters/repetition). Write full sentences." };
-    if (r.minWords && wc < r.minWords) return { ok:false, reason:`Please write at least ${r.minWords} words.` };
+    // Lesson 2
+    v1: { minWords: MIN_WORDS, keywordsAnyMin: { list: ["asteroid","mining","mine","extract","resources","metals","water","materials"], n: 2 } },
+    v2: { minWords: MIN_WORDS, keywordsAnyMin: { list: ["metals","water","fuel","profit","money","cost","missions","industry","resources","exploration"], n: 2 } },
+    v3: { minWords: MIN_WORDS, keywordsAnyMin: { list: ["true","false","because","since","so","therefore"], n: 1 } },
+    v5: { minWords: MIN_WORDS, keywordsAnyMin: { list: ["money","profit","competition","race","necessity","need","because","since","missions","resources"], n: 2 } }
+  };
 
-    if (r.mustHaveAll && !hasAll(value, r.mustHaveAll)) return { ok:false, reason:`Missing key element(s): ${r.mustHaveAll.join(", ")}.` };
-    if (r.mustHaveAny && !hasAny(value, r.mustHaveAny)) return { ok:false, reason:"Add at least one relevant keyword (from the lesson)."};
-    if (r.alsoAny && !hasAny(value, r.alsoAny)) return { ok:false, reason:"Add a connector to justify your answer (because / since / so)."};
+  function passesGate(fieldId, value){
+    const v = (value||"").trim();
+    const r = gateRules[fieldId] || {};
+
+    if (isSpam(v)) {
+      return { ok:false, reason:"Your answer looks incomplete (random letters / repetition). Write full sentences." };
+    }
+
+    const wc = wordsCount(v);
+    if (r.minWords && wc < r.minWords){
+      return { ok:false, reason:`Write at least ${r.minWords} words (no maximum).` };
+    }
 
     if (r.keywordsAnyMin){
-      const n = countMatches(value, r.keywordsAnyMin.list);
-      if (n < r.keywordsAnyMin.n) return { ok:false, reason:`Add more specific vocabulary (at least ${r.keywordsAnyMin.n} keywords).` };
+      const hits = countMatches(v, r.keywordsAnyMin.list);
+      if (hits < r.keywordsAnyMin.n){
+        return { ok:false, reason:"Add key ideas from the lesson (specific vocabulary)." };
+      }
     }
+
     return { ok:true, reason:"" };
+  }
+
+  /* -------------------------
+     SOFT CORRECTNESS (for showing correction)
+     - gate decides access
+     - this decides whether we show correction or not
+  --------------------------*/
+  function gradeAnswer(fieldId, value){
+    const t = norm(value);
+
+    let score = 0;
+    let target = 0;
+
+    if (fieldId === "q1"){
+      target = 3;
+      if (hasAny(t, ["1958","space act"])) score++;
+      if (hasAny(t, ["2015","commercial","competitiveness","launch competitiveness"])) score++;
+      if (hasAny(t, ["private","companies","resources","rights","mining"])) score++;
+      if (hasAny(t, ["government","public","framework","law","policy","nasa"])) score++;
+    }
+
+    if (fieldId === "q2"){
+      target = 3;
+      const stepKw = ["launch","spacecraft","probe","locate","find","approach","asteroid","analy","analyze","analysis","composition","extract","mine","mining","collect","process","return","use in space"];
+      const n = countMatches(t, stepKw);
+      score = (n >= 3) ? 3 : n;
+    }
+
+    if (fieldId === "q3"){
+      target = 2;
+      const life = hasAny(t, ["drink","drinking","life support","oxygen","air"]);
+      const fuel = hasAny(t, ["fuel","propellant","rocket","refuel","hydrogen"]);
+      if (life) score++;
+      if (fuel) score++;
+    }
+
+    if (fieldId === "q4"){
+      target = 3;
+      const stance = hasAny(t, ["support","oppose","pro","con","against","for"]);
+      const justify = hasAny(t, ["because","since","therefore","so"]);
+      const evidence = hasAny(t, ["benefit","risk","ethics","environment","feasible","water","missions","cost"]);
+      if (stance) score++;
+      if (justify) score++;
+      if (evidence) score++;
+    }
+
+    if (fieldId === "v1"){
+      target = 2;
+      if (hasAny(t, ["asteroid"])) score++;
+      if (hasAny(t, ["mining","mine","extract","resources","metals","water","materials"])) score++;
+    }
+
+    if (fieldId === "v2"){
+      target = 1; // very soft: if they wrote enough, ok
+      score = 1;
+    }
+
+    if (fieldId === "v3"){
+      target = 2;
+      if (hasAny(t, ["true","false"])) score++;
+      if (hasAny(t, ["because","since","so","therefore"])) score++;
+    }
+
+    if (fieldId === "v5"){
+      target = 2;
+      if (hasAny(t, ["money","profit","competition","race","necessity","need"])) score++;
+      if (hasAny(t, ["because","since","so","therefore","argument","reason"])) score++;
+    }
+
+    const correct = (target === 0) ? true : (score >= target);
+    return {
+      correct,
+      note: correct
+        ? "✅ OK. Wait for correction with the class."
+        : "⚠️ Not fully correct / incomplete. Read the correction below, then improve your answer in your copybook."
+    };
   }
 
   /* -------------------------
      COUNTERS
   --------------------------*/
   const counterMap = [
-    { id:"q1", counter:"c_q1", min:25 },
-    { id:"q2", counter:"c_q2", min:25 },
-    { id:"q3", counter:"c_q3", min:12 },
-    { id:"q4", counter:"c_q4", min:25 },
-    { id:"v1", counter:"c_v1", min:20 },
-    { id:"v2", counter:"c_v2", min:10 },
-    { id:"v3", counter:"c_v3", min:8 },
-    { id:"v5", counter:"c_v5", min:20 }
+    { id:"q1", counter:"c_q1" },
+    { id:"q2", counter:"c_q2" },
+    { id:"q3", counter:"c_q3" },
+    { id:"q4", counter:"c_q4" },
+    { id:"v1", counter:"c_v1" },
+    { id:"v2", counter:"c_v2" },
+    { id:"v3", counter:"c_v3" },
+    { id:"v5", counter:"c_v5" }
   ];
 
   function updateCounter(fieldId){
@@ -638,19 +730,13 @@
     if(!el||!c) return;
 
     const wc = wordsCount(el.value);
-    c.textContent = `Words: ${wc}/${cfg.min}`;
+    c.textContent = `Words: ${wc}/${MIN_WORDS}`;
     c.classList.remove("bad","good");
 
     if (el.value.trim().length===0) return;
 
-    if (isSpam(el.value)){
-      c.classList.add("bad");
-      c.textContent = `Words: ${wc}/${cfg.min} — write full sentences`;
-      return;
-    }
-
-    if (wc>=cfg.min) c.classList.add("good");
-    else c.classList.add("bad");
+    if (isSpam(el.value) || wc < MIN_WORDS) c.classList.add("bad");
+    else c.classList.add("good");
   }
 
   function attachCounters(){
@@ -664,7 +750,7 @@
   }
 
   /* -------------------------
-     STEP-BY-STEP SUBMISSION (Lesson 1)
+     STEP CONTROL
   --------------------------*/
   const stepOrder = ["q1","q2","q3","q4"];
 
@@ -681,67 +767,78 @@
     if (b) b.style.display = "inline-block";
   }
 
-  function showWaitMessage(fieldId, ok){
-    const fb = document.getElementById("fb_" + fieldId);
-    fb.style.display = "block";
-
-    if (ok){
-      fb.textContent = "✅ Good. Now wait for correction with the class. If you finish early, go to the Vocabulary game.";
-      unlockVocabButton();
-    }
+  function showCorrection(fieldId, show){
+    const ans = document.getElementById("ans_" + fieldId);
+    if (ans) ans.style.display = show ? "block" : "none";
   }
 
-  function showSuggestedIfNeeded(fieldId){
-    const ans = document.getElementById("ans_" + fieldId);
-    if (ans) ans.style.display = "block";
+  function showNextButton(fieldId){
+    const btn = document.getElementById("next_" + fieldId);
+    if (btn) btn.style.display = "inline-block";
+  }
+
+  function hideNextButton(fieldId){
+    const btn = document.getElementById("next_" + fieldId);
+    if (btn) btn.style.display = "none";
+  }
+
+  function goNext(fieldId){
+    const idx = stepOrder.indexOf(fieldId);
+    if (idx >= 0 && idx < stepOrder.length - 1){
+      setActiveStep(stepOrder[idx+1]);
+      return;
+    }
+    finishLesson1();
   }
 
   function submitOne(fieldId){
     const el = document.getElementById(fieldId);
     const fb = document.getElementById("fb_" + fieldId);
-    const ans = document.getElementById("ans_" + fieldId);
     if (!el || !fb) return;
 
     const value = el.value.trim();
     fb.style.display = "block";
-    if (ans) ans.style.display = "none";
 
-    attempts[fieldId] = (attempts[fieldId]||0) + 1;
+    showCorrection(fieldId, false);
 
-    const v = validate(fieldId, value);
-
-    if (!v.ok){
-      // Never unlock next step if spam/too short/etc.
-      if (attempts[fieldId] < 3){
-        fb.textContent = "Not yet. " + v.reason + " (Try again.)";
-      } else {
-        fb.textContent = "Third attempt reached. Read the suggested answer, then improve your answer in your copybook.";
-        showSuggestedIfNeeded(fieldId);
-        unlockVocabButton();
-      }
+    // HARD GATE: if fails, they cannot proceed
+    const gate = passesGate(fieldId, value);
+    if (!gate.ok){
+      fb.textContent = "Not yet. " + gate.reason;
+      hideNextButton(fieldId);
       return;
     }
 
-    // OK ✅
-    fb.textContent = "✅ Good. Now wait for correction with the class. If you finish early, go to the Vocabulary game.";
+    // Gate passed => allow next
+    const g = gradeAnswer(fieldId, value);
+    fb.textContent = g.note;
     unlockVocabButton();
+    showNextButton(fieldId);
 
-    // Move to next step (sequential)
-    const idx = stepOrder.indexOf(fieldId);
-    if (idx >= 0 && idx < stepOrder.length - 1){
-      // we still move to next question, but the message tells them to wait
-      setActiveStep(stepOrder[idx+1]);
-    } else {
-      // Lesson 1 done
-      try { localStorage.setItem("lesson1Done","1"); } catch(e){}
-      document.getElementById("lesson1DoneCard").style.display = "block";
-      // show button label state
-      // (Lesson 2 still needs the code)
+    // Show correction ONLY if not correct (soft grading)
+    if (!g.correct){
+      showCorrection(fieldId, true);
     }
   }
 
+  function finishLesson1(){
+    try { localStorage.setItem("lesson1Done","1"); } catch(e){}
+    document.getElementById("lesson1DoneCard").style.display = "block";
+
+    const summary =
+      "The 1958 Space Act created a public framework for U.S. space activities, while the 2015 Commercial Space Launch Competitiveness Act supports private companies and resource rights. " +
+      "Asteroid mining can involve launching a spacecraft, locating and approaching an asteroid, analysing its composition, confirming valuable resources (especially water), and extracting/collecting materials to use in space. " +
+      "Water is crucial because it supports life (drinking/oxygen) and can be processed into propellant for refuelling, making longer missions possible. " +
+      "Many documents are optimistic about asteroid mining because they highlight feasibility and benefits, but a critical view can also mention risks, ethics, and environmental issues. " +
+      "In all cases, a clear opinion must be justified with evidence.";
+    const p = document.getElementById("courseSummary");
+    if (p) p.textContent = summary;
+
+    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+  }
+
   /* -------------------------
-     LESSON 2 SUBMISSION (keeps anti-charabia, 3 attempts, suggested answers)
+     LESSON 2 SUBMISSION (GATED)
   --------------------------*/
   function getRadioValue(name){
     const el = document.querySelector('input[name="' + name + '"]:checked');
@@ -766,34 +863,36 @@
       return;
     }
 
-    attempts.v1++; attempts.v2++; attempts.v3++; attempts.v5++;
+    // Gate each text field
+    const g1 = passesGate("v1", v1);
+    const g2 = passesGate("v2", v2);
+    const g3 = passesGate("v3", v3);
+    const g5 = passesGate("v5", v5);
 
-    const a1 = validate("v1", v1);
-    const a2 = validate("v2", v2);
-    const a3 = validate("v3", v3);
-    const a5 = validate("v5", v5);
+    if (!g1.ok) { fb.textContent = "Not yet (A1). " + g1.reason; return; }
+    if (!g2.ok) { fb.textContent = "Not yet (A2). " + g2.reason; return; }
+    if (!g3.ok) { fb.textContent = "Not yet (A3). " + g3.reason; return; }
+    if (!g5.ok) { fb.textContent = "Not yet (A5). " + g5.reason; return; }
+
+    // MCQ check + show correction if needed
+    const soft1 = gradeAnswer("v1", v1);
+    const soft3 = gradeAnswer("v3", v3);
+    const soft5 = gradeAnswer("v5", v5);
 
     const problems = [];
-    if (!a1.ok) problems.push(a1.reason);
-    if (!a2.ok) problems.push(a2.reason);
-    if (!a3.ok) problems.push(a3.reason);
-    if (v4 !== "water") problems.push("For A4, choose the option that matches the video (hint: it helps life + fuel).");
-    if (!a5.ok) problems.push(a5.reason);
-
-    const maxAttempt = Math.max(attempts.v1, attempts.v2, attempts.v3, attempts.v5);
+    if (!soft1.correct) problems.push("A1 needs a clearer definition (what it is + resources).");
+    if (v4 !== "water") problems.push("A4: choose the option that matches the video (hint: life + fuel).");
+    if (!soft3.correct) problems.push("A3: write True/False + a short justification.");
+    if (!soft5.correct) problems.push("A5: give an opinion + justification.");
 
     if (problems.length > 0){
-      if (maxAttempt < 3){
-        fb.textContent = "Not yet. " + problems[0];
-      } else {
-        fb.textContent = "Third attempt reached. Here are the suggested answers to help you.";
-        if (ans) ans.style.display = "block";
-        unlockVocabButton();
-      }
+      fb.textContent = "⚠️ Not fully correct / incomplete. Read the correction below, then improve your answer in your copybook.";
+      if (ans) ans.style.display = "block";
+      unlockVocabButton();
       return;
     }
 
-    fb.textContent = "✅ Good. Wait for correction with the class.";
+    fb.textContent = "✅ OK. Wait for correction with the class.";
     if (ans) ans.style.display = "block";
     unlockVocabButton();
   }
@@ -887,9 +986,6 @@
   /* init */
   attachCounters();
   newGame();
-
-  // show vocab button only after they have submitted at least one question
-  // (it will be toggled in unlockVocabButton())
 </script>
 
 </body>
