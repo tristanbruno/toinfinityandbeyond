@@ -30,6 +30,7 @@
       margin: 0 0 16px 0;
       flex-wrap: wrap;
     }
+
     .card {
       background: #ffffff;
       color: #000000;
@@ -118,6 +119,7 @@
       font-weight: 600;
       font-size: 0.9rem;
       margin-right: 6px;
+      margin-bottom: 6px;
     }
     .hint { font-size: 0.95rem; opacity: 0.9; margin-top: 6px; }
     ul { padding-left: 18px; }
@@ -150,6 +152,7 @@
       align-items: baseline;
       gap: 10px;
       margin-bottom: 8px;
+      flex-wrap: wrap;
     }
     .badge {
       display:inline-block;
@@ -221,6 +224,33 @@
       font-size: 14px;
       border-radius: 8px;
     }
+
+    .scorePill{
+      display:inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.22);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-top: 10px;
+    }
+
+    .gifBox{
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #e3e7f2;
+      background: #f7f9fe;
+      margin-top: 12px;
+    }
+    .gifBox img{
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0;
+      border-radius: 0;
+    }
   </style>
 </head>
 
@@ -230,6 +260,7 @@
   <h1>🚀 To Infinity and Beyond</h1>
   <p><span class="pill">Key question</span> Space conquest: a way to make money, a competition or a necessity?</p>
   <p><span class="pill">Theme</span> Space conquest: scientific innovations and responsibility</p>
+  <div class="scorePill" id="scorePill">Score: 0</div>
 </header>
 
 <main>
@@ -375,7 +406,7 @@
   <section id="page-video" style="display:none;">
     <div class="card">
       <h2>Lesson 2 – Video: Asteroid Mining</h2>
-      <p class="hint"><strong>This is Lesson 2.</strong> Only work on this section after completing Lesson 1.</p>
+      <p class="hint"><strong>This is Lesson 2.</strong> Work question by question. Minimum: 15 words (except the multiple choice).</p>
 
       <div style="position:relative; padding-top:56.25%; border-radius:12px; overflow:hidden;">
         <iframe
@@ -389,43 +420,133 @@
 
       <div class="card" style="margin-top:14px;">
         <h3>Activities (Lesson 2)</h3>
+        <p class="hint">Same rule as Lesson 1: you can go next after submitting, but you may see “incomplete” feedback.</p>
 
-        <label>A1. In 2–3 sentences, explain what asteroid mining is.</label>
-        <textarea id="v1" rows="3" placeholder="Write your answer..."></textarea>
-        <div class="counter" id="c_v1">Words: 0/15</div>
+        <!-- Step L2-1 -->
+        <div class="step active" id="step-v1">
+          <div class="stepHeader">
+            <div><span class="badge">Activity 1/5</span></div>
+            <div class="hint" style="margin:0;">Minimum: 15 words</div>
+          </div>
 
-        <label>A2. List two reasons why companies might want to mine asteroids.</label>
-        <textarea id="v2" rows="2" placeholder="Write your answer..."></textarea>
-        <div class="counter" id="c_v2">Words: 0/15</div>
+          <label>A1. In 2–3 sentences, explain what asteroid mining is.</label>
+          <textarea id="v1" rows="3" placeholder="Write your answer..."></textarea>
+          <div class="counter" id="c_v1">Words: 0/15</div>
 
-        <label>A3. True or False (justify briefly): Mining in space could help missions go further.</label>
-        <textarea id="v3" rows="2" placeholder="True/False + justification..."></textarea>
-        <div class="counter" id="c_v3">Words: 0/15</div>
+          <button type="button" onclick="submitOne('v1')">Submit A1</button>
+          <button type="button" class="smallBtn" id="next_v1" onclick="goNextLesson2('v1')" style="display:none; margin-left:10px;">Next</button>
 
-        <label>A4. Multiple choice: Which resource is often described as especially useful in space?</label>
-        <div style="margin-top:6px;">
-          <label style="font-weight:normal; margin-top:8px;"><input type="radio" name="v4" value="gold"> Gold</label><br>
-          <label style="font-weight:normal; margin-top:8px;"><input type="radio" name="v4" value="water"> Water</label><br>
-          <label style="font-weight:normal; margin-top:8px;"><input type="radio" name="v4" value="diamonds"> Diamonds</label><br>
-          <label style="font-weight:normal; margin-top:8px;"><input type="radio" name="v4" value="coal"> Coal</label>
+          <div class="feedback" id="fb_v1"></div>
+          <div class="answers" id="ans_v1">
+            <h3>Correction (A1)</h3>
+            <p>Asteroid mining is the idea of extracting useful resources (like water, metals, or minerals) from asteroids rather than only from Earth.</p>
+          </div>
         </div>
 
-        <label>A5. In your opinion, is asteroid mining mainly about money, competition, or necessity? Explain.</label>
-        <textarea id="v5" rows="3" placeholder="Write your opinion + one argument..."></textarea>
-        <div class="counter" id="c_v5">Words: 0/15</div>
+        <!-- Step L2-2 -->
+        <div class="step" id="step-v2">
+          <div class="stepHeader">
+            <div><span class="badge">Activity 2/5</span></div>
+            <div class="hint" style="margin:0;">Minimum: 15 words</div>
+          </div>
 
-        <button type="button" onclick="submitLesson2()">Submit Lesson 2</button>
-        <div class="feedback" id="fb_l2"></div>
+          <label>A2. List two reasons why companies might want to mine asteroids.</label>
+          <textarea id="v2" rows="2" placeholder="Write your answer..."></textarea>
+          <div class="counter" id="c_v2">Words: 0/15</div>
 
-        <div class="answers" id="ans_l2">
-          <h3>Correction / Suggested answers</h3>
-          <p><strong>A1.</strong> Asteroid mining is the idea of extracting useful resources (like water, metals, or minerals) from asteroids rather than only from Earth.</p>
-          <p><strong>A2.</strong> Examples: rare metals for industry; water for life support and fuel; reducing costs by using resources already in space; supporting long-term exploration.</p>
-          <p><strong>A3.</strong> True: if resources are available in space, spacecraft can refuel or get supplies without returning to Earth, making longer missions easier.</p>
-          <p><strong>A4.</strong> Water (because it supports life and can be turned into oxygen and fuel).</p>
-          <p><strong>A5.</strong> Accept any well-argued answer (money/competition/necessity) if justified with ideas from the video.</p>
-          <p style="font-weight:bold; margin-top:16px;">✏️ Write that in your copybook! ;)</p>
+          <button type="button" onclick="submitOne('v2')">Submit A2</button>
+          <button type="button" class="smallBtn" id="next_v2" onclick="goNextLesson2('v2')" style="display:none; margin-left:10px;">Next</button>
+
+          <div class="feedback" id="fb_v2"></div>
+          <div class="answers" id="ans_v2">
+            <h3>Correction (A2)</h3>
+            <p>Examples: rare metals for industry; water for life support and fuel; reducing costs by using resources already in space; supporting long-term exploration.</p>
+          </div>
         </div>
+
+        <!-- Step L2-3 -->
+        <div class="step" id="step-v3">
+          <div class="stepHeader">
+            <div><span class="badge">Activity 3/5</span></div>
+            <div class="hint" style="margin:0;">Minimum: 15 words</div>
+          </div>
+
+          <label>A3. True or False (justify briefly): Mining in space could help missions go further.</label>
+          <textarea id="v3" rows="2" placeholder="True/False + justification..."></textarea>
+          <div class="counter" id="c_v3">Words: 0/15</div>
+
+          <button type="button" onclick="submitOne('v3')">Submit A3</button>
+          <button type="button" class="smallBtn" id="next_v3" onclick="goNextLesson2('v3')" style="display:none; margin-left:10px;">Next</button>
+
+          <div class="feedback" id="fb_v3"></div>
+          <div class="answers" id="ans_v3">
+            <h3>Correction (A3)</h3>
+            <p>True: if resources are available in space, spacecraft can refuel or get supplies without returning to Earth, making longer missions easier.</p>
+          </div>
+        </div>
+
+        <!-- Step L2-4 (MCQ) -->
+        <div class="step" id="step-v4">
+          <div class="stepHeader">
+            <div><span class="badge">Activity 4/5</span></div>
+            <div class="hint" style="margin:0;">Multiple choice</div>
+          </div>
+
+          <label>A4. Multiple choice: Which resource is often described as especially useful in space?</label>
+          <div style="margin-top:6px;">
+            <label style="font-weight:normal; margin-top:8px;"><input type="radio" name="v4" value="gold"> Gold</label><br>
+            <label style="font-weight:normal; margin-top:8px;"><input type="radio" name="v4" value="water"> Water</label><br>
+            <label style="font-weight:normal; margin-top:8px;"><input type="radio" name="v4" value="diamonds"> Diamonds</label><br>
+            <label style="font-weight:normal; margin-top:8px;"><input type="radio" name="v4" value="coal"> Coal</label>
+          </div>
+
+          <button type="button" onclick="submitMCQv4()">Submit A4</button>
+          <button type="button" class="smallBtn" id="next_v4" onclick="goNextLesson2('v4')" style="display:none; margin-left:10px;">Next</button>
+
+          <div class="feedback" id="fb_v4"></div>
+          <div class="answers" id="ans_v4">
+            <h3>Correction (A4)</h3>
+            <p>Water (because it supports life and can be turned into oxygen and fuel).</p>
+          </div>
+        </div>
+
+        <!-- Step L2-5 -->
+        <div class="step" id="step-v5">
+          <div class="stepHeader">
+            <div><span class="badge">Activity 5/5</span></div>
+            <div class="hint" style="margin:0;">Minimum: 15 words</div>
+          </div>
+
+          <label>A5. In your opinion, is asteroid mining mainly about money, competition, or necessity? Explain.</label>
+          <textarea id="v5" rows="3" placeholder="Write your opinion + one argument..."></textarea>
+          <div class="counter" id="c_v5">Words: 0/15</div>
+
+          <button type="button" onclick="submitOne('v5')">Submit A5</button>
+          <button type="button" class="smallBtn" id="next_v5" onclick="goNextLesson2('v5')" style="display:none; margin-left:10px;">Finish</button>
+
+          <div class="feedback" id="fb_v5"></div>
+          <div class="answers" id="ans_v5">
+            <h3>Correction (A5)</h3>
+            <p>Accept any well-argued answer (money/competition/necessity) if justified with ideas from the video.</p>
+          </div>
+        </div>
+
+        <!-- End Lesson 2 -->
+        <div class="card" id="lesson2DoneCard" style="display:none; margin-top:14px;">
+          <h2>All done ✅</h2>
+          <p><strong>Final score:</strong> <span id="finalScoreText"></span></p>
+          <p class="hint" id="finalFeedback" style="opacity:1; color:#000;"></p>
+
+          <div class="gifBox">
+            <img id="congratsGif" alt="Congratulations GIF" />
+          </div>
+
+          <div class="row">
+            <button type="button" class="smallBtn" onclick="showPage('worksheet')">Back to Lesson 1</button>
+            <button type="button" class="smallBtn" onclick="showPage('vocab')">Vocabulary game</button>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -465,11 +586,36 @@
 </div>
 
 <script>
-  /* -------------------------
-     NAV + LESSON 2 LOCK
-  --------------------------*/
+  /* ============================================================
+     CONFIG
+  ============================================================ */
   const LESSON2_CODE = "misterbruno";
+  const MIN_WORDS = 15;
 
+  // === IA (via Cloudflare Worker) ===
+  const WORKER_URL = "https://toinfinityandbeyond.tristanbrunoedu.workers.dev";
+  const USE_AI_VALIDATION = true; // mets false pour revenir à la validation locale
+
+  // External GIF (online is OK)
+  const CONGRATS_GIF_URL = "https://media.giphy.com/media/111ebonMs90YLu/giphy.gif";
+
+  // Scoring: accepted = 2 points, incomplete = 1 point
+  const POINTS_ACCEPTED = 2;
+  const POINTS_INCOMPLETE = 1;
+
+  // Storage
+  const STORE_PREFIX = "tiab_v2_";
+
+  // Lesson 1 and Lesson 2 step order
+  const stepOrderL1 = ["q1","q2","q3","q4"];
+  const stepOrderL2 = ["v1","v2","v3","v4","v5"];
+
+  const TEXT_FIELDS = ["q1","q2","q3","q4","v1","v2","v3","v5"];
+  const RADIO_FIELDS = ["v4"];
+
+  /* ============================================================
+     NAV + LESSON 2 LOCK (UPDATED: no need to finish Lesson 1)
+  ============================================================ */
   function showPage(which){
     const pages = ["worksheet","video","vocab"];
     pages.forEach(p => {
@@ -493,24 +639,15 @@
   }
 
   function lesson2Unlocked(){
-    try { return sessionStorage.getItem("lesson2Unlocked") === "1"; }
+    try { return sessionStorage.getItem(STORE_PREFIX + "lesson2Unlocked") === "1"; }
     catch(e){ return false; }
   }
 
   function markLesson2Unlocked(){
-    try { sessionStorage.setItem("lesson2Unlocked","1"); } catch(e){}
+    try { sessionStorage.setItem(STORE_PREFIX + "lesson2Unlocked","1"); } catch(e){}
   }
 
   function showLesson2(){
-    const l1done = (function(){
-      try { return localStorage.getItem("lesson1Done") === "1"; } catch(e){ return false; }
-    })();
-
-    if (!l1done){
-      alert("Finish Lesson 1 first.");
-      showPage("worksheet");
-      return;
-    }
     if (!lesson2Unlocked()){
       openModal();
       return;
@@ -529,261 +666,72 @@
       setTimeout(() => {
         closeModal();
         showPage("video");
-      }, 400);
+      }, 350);
     } else {
       fb.textContent = "Wrong code. Try again.";
     }
   }
 
-  /* -------------------------
-     HELPERS
-  --------------------------*/
-  const MIN_WORDS = 15;
+  /* ============================================================
+     STORAGE HELPERS (NEW)
+  ============================================================ */
+  function k(key){ return STORE_PREFIX + key; }
 
-  function norm(s){ return (s||"").toLowerCase().trim(); }
-
-  function wordsCount(text){
-    const t = norm(text);
-    if (!t) return 0;
-    return t.split(/\s+/).filter(Boolean).length;
+  function storeSet(key, value){
+    try { localStorage.setItem(k(key), value); } catch(e){}
+  }
+  function storeGet(key, fallback=""){
+    try {
+      const v = localStorage.getItem(k(key));
+      return (v === null || v === undefined) ? fallback : v;
+    } catch(e){ return fallback; }
+  }
+  function storeSetJSON(key, obj){
+    try { localStorage.setItem(k(key), JSON.stringify(obj)); } catch(e){}
+  }
+  function storeGetJSON(key, fallback=null){
+    try {
+      const raw = localStorage.getItem(k(key));
+      if (!raw) return fallback;
+      return JSON.parse(raw);
+    } catch(e){ return fallback; }
   }
 
-  function hasAny(text, list){
-    const t = norm(text);
-    return list.some(k => t.includes(k));
+  function statusKey(fieldId){ return "status_" + fieldId; }
+  function answerKey(fieldId){ return "answer_" + fieldId; }
+  function radioKey(name){ return "radio_" + name; }
+
+  function setStatus(fieldId, obj){
+    storeSetJSON(statusKey(fieldId), obj);
+    updateScoreUI();
+  }
+  function getStatus(fieldId){
+    return storeGetJSON(statusKey(fieldId), null);
   }
 
-  function countMatches(text, keywords){
-    const t = norm(text);
-    return keywords.reduce((acc,k)=>acc+(t.includes(k)?1:0),0);
+  function setAnswer(fieldId, value){
+    storeSet(answerKey(fieldId), value);
+  }
+  function getAnswer(fieldId){
+    return storeGet(answerKey(fieldId), "");
   }
 
-  /* -------------------------
-     ANTI-CHARABIA (FIXED / LESS AGGRESSIVE)
-     - blocks real spam only
-     - avoids false positives on long correct answers
-  --------------------------*/
-  function isSpam(text){
-    const raw = (text || "").trim();
-    if (raw.length < 10) return true;
-
-    const compact = raw.toLowerCase().replace(/[\s\W_]+/g, "");
-    if (compact.length < 10) return true;
-
-    // A) long run of same character (aaaaaaa…)
-    let run = 1;
-    for (let i = 1; i < compact.length; i++) {
-      if (compact[i] === compact[i - 1]) {
-        run++;
-        if (run >= 10) return true;
-      } else run = 1;
-    }
-
-    // B) ababababab…
-    if (compact.length >= 24) {
-      const a = compact[0], b = compact[1];
-      if (a && b) {
-        let ok = true;
-        for (let i = 0; i < compact.length; i++) {
-          if (compact[i] !== (i % 2 === 0 ? a : b)) { ok = false; break; }
-        }
-        if (ok) return true;
-      }
-    }
-
-    // C) repeated same word too much (copy/paste)
-    const words = raw.toLowerCase().split(/\s+/).filter(Boolean);
-    if (words.length >= 12) {
-      const counts = new Map();
-      for (const w0 of words) {
-        const w = w0.replace(/[^a-z']/g, "");
-        if (w.length <= 2) continue; // ignore tiny words
-        counts.set(w, (counts.get(w) || 0) + 1);
-      }
-      let max = 0;
-      for (const v of counts.values()) max = Math.max(max, v);
-      const ratio = max / Math.max(1, words.length);
-      if (raw.length < 120 && ratio > 0.45) return true;
-      if (raw.length >= 120 && ratio > 0.32) return true;
-    }
-
-    // IMPORTANT: removed "unique char ratio" (too many false positives)
-
-    return false;
+  function setRadio(name, value){
+    storeSet(radioKey(name), value);
+  }
+  function getRadio(name){
+    return storeGet(radioKey(name), "");
   }
 
-  /* -------------------------
-     GATE RULES (MIN WORDS + SOME KEY IDEAS)
-     This gate is only to prevent "I wrote anything to unlock next".
-     It does NOT need to be perfect.
-  --------------------------*/
-  const gateRules = {
-    q1: { minWords: MIN_WORDS, keywordsAnyMin: { list: ["1958","2015","space act","commercial","private","companies","law","resources","rights"], n: 2 } },
-    q2: { minWords: MIN_WORDS, keywordsAnyMin: { list: ["launch","spacecraft","asteroid","approach","locate","find","analyze","analysis","composition","extract","collect","process","steps"], n: 3 } },
-    q3: { minWords: MIN_WORDS, keywordsAnyMin: { list: ["oxygen","life support","drink","drinking","fuel","propellant","rocket","refuel","hydrogen"], n: 2 } },
-    q4: { minWords: MIN_WORDS, keywordsAnyMin: { list: ["support","oppose","because","since","evidence","benefit","risk","ethics","environment","feasible"], n: 2 } },
-
-    v1: { minWords: MIN_WORDS, keywordsAnyMin: { list: ["asteroid","mining","mine","extract","resources","metals","water","materials"], n: 2 } },
-    v2: { minWords: MIN_WORDS, keywordsAnyMin: { list: ["metals","water","fuel","profit","money","cost","missions","industry","resources","exploration"], n: 2 } },
-    v3: { minWords: MIN_WORDS, keywordsAnyMin: { list: ["true","false","because","since","so","therefore"], n: 1 } },
-    v5: { minWords: MIN_WORDS, keywordsAnyMin: { list: ["money","profit","competition","race","necessity","need","because","since","missions","resources"], n: 2 } }
-  };
-
-  function passesGate(fieldId, value){
-    const v = (value || "").trim();
-    const r = gateRules[fieldId] || {};
-    const wc = wordsCount(v);
-
-    if (isSpam(v)){
-      return {
-        ok:false,
-        type:"gibberish",
-        msg:"❌ Not yet. Your answer is not readable enough (too repetitive / random). Write full sentences."
-      };
-    }
-
-    if (r.minWords && wc < r.minWords){
-      return {
-        ok:false,
-        type:"too_short",
-        msg:`❌ Not yet. Please write at least ${r.minWords} words (no maximum).`
-      };
-    }
-
-    if (r.keywordsAnyMin){
-      const hits = countMatches(v, r.keywordsAnyMin.list);
-      if (hits < r.keywordsAnyMin.n){
-        return {
-          ok:false,
-          type:"missing_keywords",
-          msg:"❌ Not yet. Add a few key ideas from the lesson (use more specific vocabulary)."
-        };
-      }
-    }
-
-    return { ok:true, type:"ok", msg:"" };
-  }
-
-  /* -------------------------
-     SOFT CORRECTNESS (SHOW CORRECTION IF INCOMPLETE)
-  --------------------------*/
-  function gradeAnswer(fieldId, value){
-    const t = norm(value);
-
-    let score = 0;
-    let target = 0;
-
-    if (fieldId === "q1"){
-      target = 3;
-      if (hasAny(t, ["1958","space act"])) score++;
-      if (hasAny(t, ["2015","commercial","competitiveness","launch competitiveness"])) score++;
-      if (hasAny(t, ["private","companies","resources","rights","mining"])) score++;
-      if (hasAny(t, ["government","public","framework","law","policy","nasa"])) score++;
-    }
-
-    if (fieldId === "q2"){
-      target = 3;
-      const stepKw = ["launch","spacecraft","probe","locate","find","approach","asteroid","analy","analyze","analysis","composition","extract","mine","mining","collect","process","return","use in space"];
-      const n = countMatches(t, stepKw);
-      score = (n >= 3) ? 3 : n;
-    }
-
-    if (fieldId === "q3"){
-      target = 2;
-      const life = hasAny(t, ["drink","drinking","life support","oxygen","air"]);
-      const fuel = hasAny(t, ["fuel","propellant","rocket","refuel","hydrogen"]);
-      if (life) score++;
-      if (fuel) score++;
-    }
-
-    if (fieldId === "q4"){
-      target = 3;
-      const stance = hasAny(t, ["support","oppose","pro","con","against","for"]);
-      const justify = hasAny(t, ["because","since","therefore","so"]);
-      const evidence = hasAny(t, ["benefit","risk","ethics","environment","feasible","water","missions","cost"]);
-      if (stance) score++;
-      if (justify) score++;
-      if (evidence) score++;
-    }
-
-    if (fieldId === "v1"){
-      target = 2;
-      if (hasAny(t, ["asteroid"])) score++;
-      if (hasAny(t, ["mining","mine","extract","resources","metals","water","materials"])) score++;
-    }
-
-    if (fieldId === "v2"){
-      target = 1; // very soft
-      score = 1;
-    }
-
-    if (fieldId === "v3"){
-      target = 2;
-      if (hasAny(t, ["true","false"])) score++;
-      if (hasAny(t, ["because","since","so","therefore"])) score++;
-    }
-
-    if (fieldId === "v5"){
-      target = 2;
-      if (hasAny(t, ["money","profit","competition","race","necessity","need"])) score++;
-      if (hasAny(t, ["because","since","so","therefore","argument","reason"])) score++;
-    }
-
-    const correct = (target === 0) ? true : (score >= target);
-    return { correct };
-  }
-
-  /* -------------------------
-     COUNTERS
-  --------------------------*/
-  const counterMap = [
-    { id:"q1", counter:"c_q1" },
-    { id:"q2", counter:"c_q2" },
-    { id:"q3", counter:"c_q3" },
-    { id:"q4", counter:"c_q4" },
-    { id:"v1", counter:"c_v1" },
-    { id:"v2", counter:"c_v2" },
-    { id:"v3", counter:"c_v3" },
-    { id:"v5", counter:"c_v5" }
-  ];
-
-  function updateCounter(fieldId){
-    const cfg = counterMap.find(x=>x.id===fieldId);
-    if(!cfg) return;
-    const el = document.getElementById(cfg.id);
-    const c  = document.getElementById(cfg.counter);
-    if(!el||!c) return;
-
-    const wc = wordsCount(el.value);
-    c.textContent = `Words: ${wc}/${MIN_WORDS}`;
-    c.classList.remove("bad","good");
-
-    if (el.value.trim().length===0) return;
-
-    if (isSpam(el.value) || wc < MIN_WORDS) c.classList.add("bad");
-    else c.classList.add("good");
-  }
-
-  function attachCounters(){
-    counterMap.forEach(cfg=>{
-      const el = document.getElementById(cfg.id);
-      if(!el) return;
-      el.addEventListener("input", ()=>updateCounter(cfg.id));
-      el.addEventListener("blur",  ()=>updateCounter(cfg.id));
-      updateCounter(cfg.id);
-    });
-  }
-
-  /* -------------------------
-     STEP CONTROL
-  --------------------------*/
-  const stepOrder = ["q1","q2","q3","q4"];
-
-  function setActiveStep(id){
-    stepOrder.forEach(q => {
+  /* ============================================================
+     STEP CONTROL (LESSON 1)
+  ============================================================ */
+  function setActiveStepL1(id){
+    stepOrderL1.forEach(q => {
       const box = document.getElementById("step-" + q);
       if (box) box.classList.toggle("active", q === id);
     });
+    storeSet("activeStepL1", id);
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
@@ -808,47 +756,552 @@
   }
 
   function goNext(fieldId){
-    const idx = stepOrder.indexOf(fieldId);
-    if (idx >= 0 && idx < stepOrder.length - 1){
-      setActiveStep(stepOrder[idx+1]);
+    const idx = stepOrderL1.indexOf(fieldId);
+    if (idx >= 0 && idx < stepOrderL1.length - 1){
+      setActiveStepL1(stepOrderL1[idx+1]);
       return;
     }
     finishLesson1();
   }
 
-  function submitOne(fieldId){
+  /* ============================================================
+     STEP CONTROL (LESSON 2)
+  ============================================================ */
+  function setActiveStepL2(id){
+    stepOrderL2.forEach(q => {
+      const box = document.getElementById("step-" + q);
+      if (box) box.classList.toggle("active", q === id);
+    });
+    storeSet("activeStepL2", id);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  function showNextButtonL2(fieldId){
+    const btn = document.getElementById("next_" + fieldId);
+    if (btn) btn.style.display = "inline-block";
+  }
+  function hideNextButtonL2(fieldId){
+    const btn = document.getElementById("next_" + fieldId);
+    if (btn) btn.style.display = "none";
+  }
+  function showCorrectionL2(fieldId, show){
+    const ans = document.getElementById("ans_" + fieldId);
+    if (ans) ans.style.display = show ? "block" : "none";
+  }
+
+  function goNextLesson2(fieldId){
+    const idx = stepOrderL2.indexOf(fieldId);
+    if (idx >= 0 && idx < stepOrderL2.length - 1){
+      setActiveStepL2(stepOrderL2[idx+1]);
+      return;
+    }
+    finishLesson2();
+  }
+
+  function setCorrectionVisible(fieldId, show){
+    if (fieldId.startsWith("v")) showCorrectionL2(fieldId, show);
+    else showCorrection(fieldId, show);
+  }
+
+  function setNextVisible(fieldId, show){
+    if (fieldId.startsWith("v")) {
+      if (show) showNextButtonL2(fieldId); else hideNextButtonL2(fieldId);
+    } else {
+      if (show) showNextButton(fieldId); else hideNextButton(fieldId);
+    }
+  }
+
+  /* ============================================================
+     IA VALIDATION (Cloudflare Worker)
+     (Ajout : feedback structuré + autorisation de passer à l’étape suivante)
+  ============================================================ */
+  function getQuestionText(fieldId){
+    const step = document.getElementById("step-" + fieldId);
+    if (!step) return "";
+    const lab = step.querySelector("label");
+    return lab ? lab.textContent.trim() : "";
+  }
+
+  function getReferenceAnswerText(fieldId){
+    const ans = document.getElementById("ans_" + fieldId);
+    if (!ans) return "";
+    return ans.textContent.replace(/\s+/g, " ").trim();
+  }
+
+  async function callAIValidator({ question, referenceAnswer, studentAnswer, minWords }){
+    const payload = { question, referenceAnswer, studentAnswer, minWords };
+
+    const r = await fetch(WORKER_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+
+    const data = await r.json().catch(() => null);
+    if (!r.ok) {
+      const details = data && (data.details || data.error) ? (data.details || data.error) : ("HTTP " + r.status);
+      throw new Error(details);
+    }
+    return data;
+  }
+
+  function pointsFromAIStatus(aiStatus){
+    if (aiStatus === "ACCEPTED") return POINTS_ACCEPTED;
+    if (aiStatus === "INCOMPLETE") return POINTS_INCOMPLETE;
+    return 0; // REWORK
+  }
+
+  function formatAIFeedback(result){
+    let txt = result && result.feedback ? String(result.feedback) : "";
+
+    if (result && Array.isArray(result.missingIdeas) && result.missingIdeas.length > 0){
+      txt += "\n\nMissing key ideas:\n";
+      for (const idea of result.missingIdeas.slice(0, 6)){
+        txt += "• " + idea + "\n";
+      }
+    }
+
+    if (result && result.status === "REWORK"){
+      // Petit rappel bienveillant, sans bloquer le ton
+      txt += (txt ? "\n\n" : "") + "Please rewrite in clear full sentences (on topic).";
+    }
+
+    return txt.trim();
+  }
+
+  function disableStepButtons(fieldId, disabled){
+    const step = document.getElementById("step-" + fieldId);
+    if (!step) return;
+    step.querySelectorAll("button").forEach(b => { b.disabled = disabled; });
+  }
+
+  /* ============================================================
+     IMPROVED VALIDATION (NO AI) – CONCEPTS + NORMALIZATION
+  ============================================================ */
+  const STOP = new Set([
+    "the","a","an","and","or","but","so","because","since","therefore","thus",
+    "to","of","in","on","at","for","from","with","as","by","into","about",
+    "is","are","was","were","be","been","being","it","this","that","these","those",
+    "they","we","you","i","he","she","them","us","our","their","your","my"
+  ]);
+
+  function stripDiacritics(s){
+    return (s || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  }
+
+  function normalizeText(s){
+    let t = stripDiacritics(String(s || "").toLowerCase()).trim();
+    t = t
+      .replace(/\bcan't\b/g, "cannot")
+      .replace(/\bdon't\b/g, "do not")
+      .replace(/\bdoesn't\b/g, "does not")
+      .replace(/\bdidn't\b/g, "did not")
+      .replace(/\bwon't\b/g, "will not")
+      .replace(/\bi'm\b/g, "i am")
+      .replace(/\bit's\b/g, "it is")
+      .replace(/\bthat's\b/g, "that is");
+
+    t = t.replace(/[^a-z0-9'\s]+/g, " ").replace(/\s+/g, " ").trim();
+    return t;
+  }
+
+  function tokens(text, { removeStop=true } = {}){
+    const t = normalizeText(text);
+    if (!t) return [];
+    const raw = t.split(" ").filter(Boolean);
+    if (!removeStop) return raw;
+
+    return raw
+      .map(w => {
+        if (w.length > 5 && w.endsWith("ing")) return w.slice(0, -3);
+        if (w.length > 4 && w.endsWith("ed"))  return w.slice(0, -2);
+        if (w.length > 4 && w.endsWith("s"))   return w.slice(0, -1);
+        return w;
+      })
+      .filter(w => !STOP.has(w));
+  }
+
+  function wordsCount(text){
+    const t = normalizeText(text);
+    if (!t) return 0;
+    return t.split(/\s+/).filter(Boolean).length;
+  }
+
+  function uniqueRatio(wordList){
+    const s = new Set(wordList);
+    return s.size / Math.max(1, wordList.length);
+  }
+
+  function hasAnyVariant(normText, variants){
+    return variants.some(v => normText.includes(v));
+  }
+
+  function conceptHits(normText, conceptVariants){
+    let hits = 0;
+    for (const variants of conceptVariants){
+      if (hasAnyVariant(normText, variants)) hits++;
+    }
+    return hits;
+  }
+
+  function jaccardSimilarity(aText, bText){
+    const A = new Set(tokens(aText));
+    const B = new Set(tokens(bText));
+    if (A.size === 0 || B.size === 0) return 0;
+    let inter = 0;
+    for (const x of A) if (B.has(x)) inter++;
+    const union = A.size + B.size - inter;
+    return inter / Math.max(1, union);
+  }
+
+  /* Anti-charabia (gentle but blocks lists/random) */
+  function isSpam(text){
+    const raw = (text || "").trim();
+    if (raw.length < 10) return true;
+
+    const compact = raw.toLowerCase().replace(/[\s\W_]+/g, "");
+    if (compact.length < 10) return true;
+
+    // A) long run of same character
+    let run = 1;
+    for (let i = 1; i < compact.length; i++) {
+      if (compact[i] === compact[i - 1]) {
+        run++;
+        if (run >= 10) return true;
+      } else run = 1;
+    }
+
+    // B) ababab pattern
+    if (compact.length >= 24) {
+      const a = compact[0], b = compact[1];
+      if (a && b) {
+        let ok = true;
+        for (let i = 0; i < compact.length; i++) {
+          if (compact[i] !== (i % 2 === 0 ? a : b)) { ok = false; break; }
+        }
+        if (ok) return true;
+      }
+    }
+
+    // C) repeated same word too much
+    const w = tokens(raw, { removeStop:false });
+    if (w.length >= 12) {
+      const counts = new Map();
+      for (const x of w) {
+        const clean = x.replace(/[^a-z0-9']/g, "");
+        if (clean.length <= 2) continue;
+        counts.set(clean, (counts.get(clean) || 0) + 1);
+      }
+      let max = 0;
+      for (const v of counts.values()) max = Math.max(max, v);
+      const ratio = max / Math.max(1, w.length);
+      if (raw.length < 160 && ratio > 0.45) return true;
+      if (raw.length >= 160 && ratio > 0.32) return true;
+    }
+
+    // D) keyword-list detector (only for short answers)
+    const wc = wordsCount(raw);
+    if (wc <= 35) {
+      const nt = normalizeText(raw);
+      const hasConnector = /(\bbecause\b|\bsince\b|\bso\b|\btherefore\b|\bbut\b)/.test(nt);
+      const hasVerbish = /(\bis\b|\bare\b|\bwas\b|\bwere\b|\bcan\b|\bcould\b|\bshould\b|\bwill\b)/.test(nt);
+      const hasPunct = /[.!?;]/.test(raw);
+      const ur = uniqueRatio(tokens(raw, { removeStop:true }));
+      if (!hasConnector && !hasVerbish && !hasPunct && ur > 0.75 && wc >= 15) return true;
+    }
+
+    return false;
+  }
+
+  /* Concept-based rules */
+  const rules = {
+    q1: {
+      minWords: MIN_WORDS,
+      minConcepts: 2,
+      concepts: [
+        ["1958", "space act 1958", "national aeronautics", "nasa", "public framework", "government role"],
+        ["2015", "commercial space launch competitiveness", "commercial space act", "private companies", "private sector", "commercial involvement"],
+        ["resource rights", "rights to resources", "space resources", "asteroid resources", "mining rights", "own the resources"],
+        ["relevant today", "still relevant", "today's debate", "current debate", "nowadays", "modern space"]
+      ],
+      correctionAnchor: "1958 space act public framework nasa government 2015 commercial private resource rights debate"
+    },
+    q2: {
+      minWords: MIN_WORDS,
+      minConcepts: 3,
+      concepts: [
+        ["launch", "send a spacecraft", "spacecraft launch", "rocket launch"],
+        ["locate", "find an asteroid", "identify an asteroid", "approach an asteroid", "reach the asteroid"],
+        ["analyze", "analysis", "study its composition", "check composition", "measure composition"],
+        ["extract", "collect", "mine", "mining", "harvest resources"],
+        ["use in space", "use the resources", "refuel", "send back", "return", "support missions"]
+      ],
+      correctionAnchor: "launch locate approach asteroid analyze composition extract collect use in space refuel"
+    },
+    q3: {
+      minWords: MIN_WORDS,
+      minConcepts: 2,
+      concepts: [
+        ["life support", "drinking", "drink", "water to drink", "oxygen", "air", "keep astronauts alive"],
+        ["fuel", "rocket fuel", "propellant", "refuel", "hydrogen", "oxygen for fuel", "longer missions"]
+      ],
+      correctionAnchor: "water life support oxygen drinking propellant fuel refuel longer missions"
+    },
+    q4: {
+      minWords: MIN_WORDS,
+      minConcepts: 2,
+      concepts: [
+        ["support", "in favor", "pro", "positive", "optimistic"],
+        ["oppose", "against", "con", "negative", "critical"],
+        ["because", "since", "therefore", "so"],
+        ["evidence", "for example", "benefit", "risk", "ethics", "environment", "feasible", "missing"]
+      ],
+      correctionAnchor: "support or oppose because evidence benefits risks ethics environment feasible"
+    },
+
+    v1: {
+      minWords: MIN_WORDS,
+      minConcepts: 2,
+      concepts: [
+        ["asteroid", "asteroids"],
+        ["mining", "mine", "extract", "take resources", "collect materials"],
+        ["resources", "metals", "water", "minerals", "materials"]
+      ],
+      correctionAnchor: "asteroid mining extract resources metals water"
+    },
+    v2: {
+      minWords: MIN_WORDS,
+      minConcepts: 1,
+      concepts: [
+        ["metals", "rare metals", "industry", "profit", "money", "water", "fuel", "propellant", "missions", "exploration", "reduce costs"]
+      ],
+      correctionAnchor: "companies profit metals water fuel missions reduce costs exploration"
+    },
+    v3: {
+      minWords: MIN_WORDS,
+      minConcepts: 2,
+      concepts: [
+        ["true", "false"],
+        ["because", "since", "so", "therefore", "this means"]
+      ],
+      correctionAnchor: "true because refuel supplies go further missions"
+    },
+    v5: {
+      minWords: MIN_WORDS,
+      minConcepts: 2,
+      concepts: [
+        ["money", "profit", "business"],
+        ["competition", "race", "rivalry"],
+        ["necessity", "need", "essential"],
+        ["because", "since", "so", "therefore"]
+      ],
+      correctionAnchor: "opinion money competition necessity because argument"
+    }
+  };
+
+  function passesGate(fieldId, value){
+    const v = (value || "").trim();
+    const r = rules[fieldId] || {};
+    const wc = wordsCount(v);
+
+    if (isSpam(v)){
+      return { ok:false, type:"gibberish",
+        msg:"❌ Not yet. Your answer is not readable enough (too repetitive / list-like). Write full sentences."
+      };
+    }
+    if (r.minWords && wc < r.minWords){
+      return { ok:false, type:"too_short", msg:`❌ Not yet. Please write at least ${r.minWords} words (no maximum).` };
+    }
+
+    if (r.concepts && r.minConcepts){
+      const nt = normalizeText(v);
+      const conceptVariants = r.concepts.map(list => list.map(x => normalizeText(x)));
+      const hits = conceptHits(nt, conceptVariants);
+      if (hits < r.minConcepts){
+        return { ok:false, type:"missing_ideas",
+          msg:"❌ Not yet. Add more key ideas (explain more clearly, with specific information)."
+        };
+      }
+    }
+    return { ok:true, type:"ok", msg:"" };
+  }
+
+  function gradeAnswer(fieldId, value){
+    const r = rules[fieldId];
+    if (!r) return { correct:true, level:"accepted" };
+
+    const nt = normalizeText(value);
+    const conceptVariants = (r.concepts || []).map(list => list.map(x => normalizeText(x)));
+    const covered = conceptHits(nt, conceptVariants);
+    const total = conceptVariants.length || 1;
+
+    const sim = r.correctionAnchor ? jaccardSimilarity(value, r.correctionAnchor) : 0;
+
+    const acceptedIfConcepts = Math.max(r.minConcepts || 1, Math.ceil(total * 0.45));
+    const accepted = (covered >= acceptedIfConcepts) || (covered >= (r.minConcepts || 1) && sim >= 0.18);
+
+    if (accepted) return { correct:true, level:"accepted", debug:{covered,total,sim} };
+    return { correct:false, level:"incomplete", debug:{covered,total,sim} };
+  }
+
+  /* ============================================================
+     COUNTERS (SAME UI, NOW PERSISTENT)
+  ============================================================ */
+  const counterMap = [
+    { id:"q1", counter:"c_q1" },
+    { id:"q2", counter:"c_q2" },
+    { id:"q3", counter:"c_q3" },
+    { id:"q4", counter:"c_q4" },
+    { id:"v1", counter:"c_v1" },
+    { id:"v2", counter:"c_v2" },
+    { id:"v3", counter:"c_v3" },
+    { id:"v5", counter:"c_v5" }
+  ];
+
+  function updateCounter(fieldId){
+    const cfg = counterMap.find(x=>x.id===fieldId);
+    if(!cfg) return;
+    const el = document.getElementById(cfg.id);
+    const c  = document.getElementById(cfg.counter);
+    if(!el||!c) return;
+
+    const wc = wordsCount(el.value);
+    c.textContent = `Words: ${wc}/${MIN_WORDS}`;
+    c.classList.remove("bad","good");
+
+    if (el.value.trim().length===0) return;
+    if (isSpam(el.value) || wc < MIN_WORDS) c.classList.add("bad");
+    else c.classList.add("good");
+  }
+
+  function attachCounters(){
+    counterMap.forEach(cfg=>{
+      const el = document.getElementById(cfg.id);
+      if(!el) return;
+      el.addEventListener("input", ()=>{
+        updateCounter(cfg.id);
+        setAnswer(cfg.id, el.value); // persist
+      });
+      el.addEventListener("blur", ()=>{
+        updateCounter(cfg.id);
+        setAnswer(cfg.id, el.value); // persist
+      });
+      updateCounter(cfg.id);
+    });
+  }
+
+  /* ============================================================
+     SUBMIT (IA + mode local de secours)
+  ============================================================ */
+  async function submitOne(fieldId){
     const el = document.getElementById(fieldId);
     const fb = document.getElementById("fb_" + fieldId);
     if (!el || !fb) return;
 
     const value = el.value.trim();
+    setAnswer(fieldId, el.value);
+
     fb.style.display = "block";
-    showCorrection(fieldId, false);
-    hideNextButton(fieldId);
+    setCorrectionVisible(fieldId, false);
+    setNextVisible(fieldId, false);
 
+    // Filtre local (évite de consommer des appels si réponse insuffisante)
     const gate = passesGate(fieldId, value);
-
     if (!gate.ok){
       fb.textContent = gate.msg;
       return;
     }
 
-    const g = gradeAnswer(fieldId, value);
+    // Mode local (si besoin)
+    if (!USE_AI_VALIDATION){
+      const g = gradeAnswer(fieldId, value);
 
-    if (g.correct){
-      fb.textContent = "✅ Accepted. You can click Next. (Wait for correction with the class.)";
-      showCorrection(fieldId, false);
-    } else {
-      fb.textContent = "✅ Submitted (you can click Next), but your answer is incomplete. Read the correction below, then improve it in your copybook.";
-      showCorrection(fieldId, true);
+      if (g.correct){
+        fb.textContent = "✅ Accepted. You can click Next. (You can still improve style/precision.)";
+        setCorrectionVisible(fieldId, false);
+        setStatus(fieldId, { submitted:true, level:"accepted", points: POINTS_ACCEPTED, ts: Date.now() });
+      } else {
+        fb.textContent = "✅ Submitted (you can click Next), but your answer is incomplete. Read the correction below, then improve it in your copybook.";
+        setCorrectionVisible(fieldId, true);
+        setStatus(fieldId, { submitted:true, level:"incomplete", points: POINTS_INCOMPLETE, ts: Date.now() });
+      }
+
+      unlockVocabButton();
+      setNextVisible(fieldId, true);
+
+      if (stepOrderL1.every(id => (getStatus(id)||{}).submitted)) finishLesson1(true);
+      if (stepOrderL2.every(id => (getStatus(id)||{}).submitted)) finishLesson2(true);
+      return;
     }
 
-    unlockVocabButton();
-    showNextButton(fieldId);
+    // Mode IA
+    disableStepButtons(fieldId, true);
+    fb.textContent = "Checking with AI…";
+
+    try {
+      const question = getQuestionText(fieldId);
+      const referenceAnswer = getReferenceAnswerText(fieldId);
+
+      const result = await callAIValidator({
+        question,
+        referenceAnswer,
+        studentAnswer: value,
+        minWords: MIN_WORDS
+      });
+
+      const pts = pointsFromAIStatus(result.status);
+      fb.textContent = formatAIFeedback(result);
+
+      // Correction visible si INCOMPLETE ou REWORK
+      setCorrectionVisible(fieldId, result.status !== "ACCEPTED");
+
+      // Next selon allowNext
+      setNextVisible(fieldId, !!result.allowNext);
+
+      const level =
+        result.status === "ACCEPTED" ? "accepted" :
+        result.status === "INCOMPLETE" ? "incomplete" : "rework";
+
+      setStatus(fieldId, {
+        submitted: true,
+        level,
+        points: pts,
+        ts: Date.now(),
+        ai: result
+      });
+
+      unlockVocabButton();
+
+      if (stepOrderL1.every(id => (getStatus(id)||{}).submitted)) finishLesson1(true);
+      if (stepOrderL2.every(id => (getStatus(id)||{}).submitted)) finishLesson2(true);
+
+    } catch (e) {
+      // Panne IA : ne pas bloquer les élèves
+      fb.textContent =
+        "AI check failed (network/service). Your answer is saved. You can click Next. (Teacher may review later.)";
+
+      setCorrectionVisible(fieldId, false);
+      setNextVisible(fieldId, true);
+
+      setStatus(fieldId, {
+        submitted:true,
+        level:"incomplete",
+        points: POINTS_INCOMPLETE,
+        ts: Date.now(),
+        aiError: String(e?.message || e)
+      });
+
+      unlockVocabButton();
+    } finally {
+      disableStepButtons(fieldId, false);
+    }
   }
 
-  function finishLesson1(){
-    try { localStorage.setItem("lesson1Done","1"); } catch(e){}
+  /* ============================================================
+     FINISH LESSONS (inchangé)
+  ============================================================ */
+  function finishLesson1(silent=false){
+    storeSet("lesson1Done","1");
     document.getElementById("lesson1DoneCard").style.display = "block";
 
     const summary =
@@ -860,70 +1313,167 @@
     const p = document.getElementById("courseSummary");
     if (p) p.textContent = summary;
 
-    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+    unlockVocabButton();
+    updateScoreUI();
+
+    if (!silent) window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
   }
 
-  /* -------------------------
-     LESSON 2 SUBMISSION (GATED)
-  --------------------------*/
   function getRadioValue(name){
     const el = document.querySelector('input[name="' + name + '"]:checked');
     return el ? el.value : '';
   }
 
-  function submitLesson2(){
-    const fb = document.getElementById("fb_l2");
-    const ans = document.getElementById("ans_l2");
-
-    const v1 = (document.getElementById("v1").value || "").trim();
-    const v2 = (document.getElementById("v2").value || "").trim();
-    const v3 = (document.getElementById("v3").value || "").trim();
-    const v4 = getRadioValue("v4");
-    const v5 = (document.getElementById("v5").value || "").trim();
-
+  function submitMCQv4(){
+    const fb = document.getElementById("fb_v4");
+    const picked = getRadioValue("v4");
     fb.style.display = "block";
-    if (ans) ans.style.display = "none";
+    showCorrectionL2("v4", false);
+    hideNextButtonL2("v4");
 
-    if (!v1 || !v2 || !v3 || !v4 || !v5){
-      fb.textContent = "❌ Please answer all activities before submitting.";
+    if (!picked){
+      fb.textContent = "❌ Not yet. Please choose one option.";
       return;
     }
 
-    const g1 = passesGate("v1", v1);
-    const g2 = passesGate("v2", v2);
-    const g3 = passesGate("v3", v3);
-    const g5 = passesGate("v5", v5);
+    setRadio("v4", picked);
 
-    if (!g1.ok) { fb.textContent = "A1 — " + g1.msg; return; }
-    if (!g2.ok) { fb.textContent = "A2 — " + g2.msg; return; }
-    if (!g3.ok) { fb.textContent = "A3 — " + g3.msg; return; }
-    if (!g5.ok) { fb.textContent = "A5 — " + g5.msg; return; }
-
-    const soft1 = gradeAnswer("v1", v1);
-    const soft3 = gradeAnswer("v3", v3);
-    const soft5 = gradeAnswer("v5", v5);
-
-    const problems = [];
-    if (!soft1.correct) problems.push("A1 needs a clearer definition (what it is + resources).");
-    if (v4 !== "water") problems.push("A4: choose the option that matches the video (hint: life + fuel).");
-    if (!soft3.correct) problems.push("A3: write True/False + a short justification.");
-    if (!soft5.correct) problems.push("A5: give an opinion + justification.");
-
-    if (problems.length > 0){
-      fb.textContent = "✅ Submitted, but incomplete. Read the correction below and improve your answers.";
-      if (ans) ans.style.display = "block";
-      unlockVocabButton();
-      return;
+    if (picked === "water"){
+      fb.textContent = "✅ Accepted. You can click Next.";
+      showCorrectionL2("v4", false);
+      setStatus("v4", { submitted:true, level:"accepted", points: POINTS_ACCEPTED, ts: Date.now() });
+    } else {
+      fb.textContent = "✅ Submitted (you can click Next), but incorrect. Read the correction below.";
+      showCorrectionL2("v4", true);
+      setStatus("v4", { submitted:true, level:"incomplete", points: 0, ts: Date.now() });
     }
 
-    fb.textContent = "✅ Accepted. Wait for correction with the class.";
-    if (ans) ans.style.display = "block";
     unlockVocabButton();
+    showNextButtonL2("v4");
+    updateScoreUI();
+
+    if (stepOrderL2.every(id => (getStatus(id)||{}).submitted)) finishLesson2(true);
   }
 
-  /* -------------------------
-     VOCAB GAME
-  --------------------------*/
+  function finishLesson2(silent=false){
+    storeSet("lesson2Done","1");
+
+    const card = document.getElementById("lesson2DoneCard");
+    card.style.display = "block";
+
+    const total = getTotalScore();
+    const max = getMaxScore();
+
+    document.getElementById("finalScoreText").textContent = `${total} / ${max}`;
+
+    const pct = max > 0 ? (total / max) : 0;
+    let msg = "Well done. Keep improving clarity and evidence.";
+    if (pct >= 0.85) msg = "Excellent work. Your answers are clear and complete.";
+    else if (pct >= 0.65) msg = "Good work. A few answers could be more precise, but overall solid.";
+    else if (pct >= 0.45) msg = "Good effort. Read the corrections and add more key ideas next time.";
+    else msg = "Keep going. Use the corrections to improve your answers step by step.";
+
+    document.getElementById("finalFeedback").textContent = msg;
+    document.getElementById("congratsGif").src = CONGRATS_GIF_URL;
+
+    unlockVocabButton();
+    updateScoreUI();
+
+    if (!silent) window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+  }
+
+  /* ============================================================
+     SCORE (TOTAL Lesson 1 + Lesson 2)
+  ============================================================ */
+  function getMaxScore(){
+    return (4 + 5) * 2;
+  }
+
+  function getTotalScore(){
+    let sum = 0;
+    const all = [...stepOrderL1, ...stepOrderL2];
+    for (const id of all){
+      const st = getStatus(id);
+      if (st && st.submitted) sum += Number(st.points || 0);
+    }
+    return sum;
+  }
+
+  function updateScoreUI(){
+    const pill = document.getElementById("scorePill");
+    if (!pill) return;
+    pill.textContent = `Score: ${getTotalScore()} / ${getMaxScore()}`;
+  }
+
+  /* ============================================================
+     RESTORE STATE ON LOAD (IA-friendly)
+  ============================================================ */
+  function restoreAnswers(){
+    // restore textareas
+    for (const id of TEXT_FIELDS){
+      const el = document.getElementById(id);
+      if (!el) continue;
+      const v = getAnswer(id);
+      if (v) el.value = v;
+      updateCounter(id);
+    }
+
+    // restore radio v4
+    const v4 = getRadio("v4");
+    if (v4){
+      const el = document.querySelector(`input[name="v4"][value="${v4}"]`);
+      if (el) el.checked = true;
+    }
+
+    // restore submitted statuses
+    const all = [...stepOrderL1, ...stepOrderL2];
+    for (const id of all){
+      const st = getStatus(id);
+      if (!st || !st.submitted) continue;
+
+      const fb = document.getElementById("fb_" + id);
+      if (fb){
+        fb.style.display = "block";
+        if (st.ai && typeof st.ai === "object"){
+          fb.textContent = formatAIFeedback(st.ai);
+        } else {
+          if (st.level === "accepted") fb.textContent = "✅ Already submitted. You can click Next.";
+          else if (st.level === "rework") fb.textContent = "❌ Needs rework. Please improve your answer.";
+          else fb.textContent = "✅ Already submitted, but incomplete. Read the correction below.";
+        }
+      }
+
+      // show correction if not accepted
+      setCorrectionVisible(id, st.level !== "accepted");
+
+      // next button policy
+      if (st.ai && st.ai.allowNext === false) setNextVisible(id, false);
+      else setNextVisible(id, true);
+    }
+
+    // restore active steps
+    const activeL1 = storeGet("activeStepL1", "q1");
+    const activeL2 = storeGet("activeStepL2", "v1");
+    if (stepOrderL1.includes(activeL1)) setActiveStepL1(activeL1);
+    if (stepOrderL2.includes(activeL2)) setActiveStepL2(activeL2);
+
+    // restore lesson completion cards
+    const l1done = storeGet("lesson1Done","0") === "1";
+    if (l1done) finishLesson1(true);
+
+    const l2done = storeGet("lesson2Done","0") === "1";
+    if (l2done) finishLesson2(true);
+
+    // show vocab button if any submission exists
+    const anySubmitted = [...stepOrderL1, ...stepOrderL2].some(id => (getStatus(id)||{}).submitted);
+    if (anySubmitted) unlockVocabButton();
+
+    updateScoreUI();
+  }
+
+  /* ============================================================
+     VOCAB GAME (FIXED: no duplicates, random correct position)
+  ============================================================ */
   const vocabItems = [
     { term:"to extract", def:"to remove (a material) from something" },
     { term:"resources", def:"useful materials that can be used or sold" },
@@ -942,6 +1492,33 @@
     return a;
   }
 
+  function escapeHtml(s){
+    return String(s)
+      .replaceAll("&","&amp;")
+      .replaceAll("<","&lt;")
+      .replaceAll(">","&gt;")
+      .replaceAll('"',"&quot;")
+      .replaceAll("'","&#039;");
+  }
+
+  function pickDistractors(correctDef, allDefs, n=3){
+    const pool = allDefs.filter(d => d !== correctDef);
+    const chosen = [];
+    const used = new Set();
+
+    for (const d of pool){
+      if (!used.has(d)) used.add(d);
+    }
+    const uniqPool = Array.from(used);
+
+    const shuffled = shuffle(uniqPool);
+    for (const d of shuffled){
+      if (chosen.length >= n) break;
+      chosen.push(d);
+    }
+    return chosen;
+  }
+
   function newGame(){
     const grid = document.getElementById("gameGrid");
     const fb = document.getElementById("fb_game");
@@ -950,14 +1527,14 @@
     grid.innerHTML = "";
 
     const terms = shuffle(vocabItems);
-    const defs  = shuffle(vocabItems.map(x=>x.def));
+    const allDefs = vocabItems.map(x=>x.def);
 
     terms.forEach((item, idx)=>{
       const qId = "vg_" + idx;
       const correct = item.def;
 
-      const choices = shuffle([correct, defs[(idx+1)%defs.length], defs[(idx+2)%defs.length], defs[(idx+3)%defs.length]])
-        .slice(0,4);
+      const distractors = pickDistractors(correct, allDefs, 3);
+      const options = shuffle([correct, ...distractors]);
 
       const box = document.createElement("div");
       box.className = "gameQ";
@@ -966,9 +1543,9 @@
           <div><span class="badge">Vocab ${idx+1}/6</span></div>
           <div class="hint" style="margin:0;">Choose the correct definition</div>
         </div>
-        <div style="font-weight:800; color:#1f3a5f; font-size:1.05rem;">${item.term}</div>
+        <div style="font-weight:800; color:#1f3a5f; font-size:1.05rem;">${escapeHtml(item.term)}</div>
         <div class="choices" style="margin-top:8px;">
-          ${choices.map((c)=>`
+          ${options.map((c)=>`
             <label>
               <input type="radio" name="${qId}" value="${escapeHtml(c)}">
               ${escapeHtml(c)}
@@ -990,7 +1567,6 @@
       const correct = (document.getElementById(qId+"_ans").value || "");
       const pickedEl = document.querySelector(`input[name="${qId}"]:checked`);
       const picked = pickedEl ? pickedEl.value : "";
-
       if (picked && picked === correct) score++;
     }
 
@@ -998,18 +1574,18 @@
     fb.textContent = `Score: ${score}/6. ${score>=5 ? "Great work." : "Try again."}`;
   }
 
-  function escapeHtml(s){
-    return String(s)
-      .replaceAll("&","&amp;")
-      .replaceAll("<","&lt;")
-      .replaceAll(">","&gt;")
-      .replaceAll('"',"&quot;")
-      .replaceAll("'","&#039;");
-  }
-
-  /* init */
+  /* ============================================================
+     INIT
+  ============================================================ */
   attachCounters();
+
+  // Persist radio choice
+  document.querySelectorAll('input[name="v4"]').forEach(r => {
+    r.addEventListener("change", ()=> setRadio("v4", getRadioValue("v4")));
+  });
+
   newGame();
+  restoreAnswers();
 </script>
 
 </body>
